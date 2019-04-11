@@ -1,6 +1,6 @@
 module.exports = {
     //...
-    baseUrl: './',
+    publicPath: './',
     pages: {
         index: {
             // page 的入口

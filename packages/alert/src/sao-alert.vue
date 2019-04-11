@@ -12,16 +12,16 @@
 </template>
 <script>
 import $ from "jquery";
-// import test from "../../../SAOIcon/icon/ok_normal.png"
-// import test2 from "../../../SAOIcon/icon/cancel_normal.png"
+import test from "../../../SAOIcon/icon/ok_normal.png"
+import test2 from "../../../SAOIcon/icon/cancel_normal.png"
 export default {
   name: "SaoAlert",
   props: ["msg", "confirmImg", "cancelImg"],
   data() {
     return {
       // confirmI: require("../../static/SAOIcon/icon/ok_normal.png")
-      confirmI: this.confirmImg,
-      cancelI:this.cancelImg
+      confirmI: test,
+      cancelI:test2
     };
   },
   mounted: function() {
