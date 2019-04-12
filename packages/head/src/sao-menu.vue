@@ -1,20 +1,41 @@
 <template>
   <div class="mask">
     <div class="menu-box">
-      <div class="menu-item" >1</div>
-      <div class="menu-item">1</div>
-      <div class="menu-item">1</div>
-      <div class="menu-item">1</div>
-      <div class="menu-item">1</div>
+      <div
+        class="menu-item"
+        :style="'background-image:url(\'/'+iconI+'\')'"
+      >1</div>
+      <div
+        class="menu-item"
+        :style="'background-image:url(\'/'+iconI+'\')'"
+      >1</div>
+      <div
+        class="menu-item"
+        :style="'background-image:url(\'/'+iconI+'\')'"
+      >1</div>
+      <div
+        class="menu-item"
+        :style="'background-image:url(\'/'+iconI+'\')'"
+      >1</div>
+      <div
+        class="menu-item"
+        :style="'background-image:url(\'/'+iconI+'\')'"
+      >1</div>
     </div>
   </div>
 </template>
 <script>
 import $ from "jquery";
+import iconImg from "../../../SAOIcon/background/btn_normal.png";
 export default {
   name: "SaoMenu",
   data() {
-    return {};
+    return {
+      iconI: iconImg
+    };
+  },
+  created:function(){
+
   },
   mounted: function() {
     $(".mask").height($(window).height());
@@ -34,11 +55,11 @@ export default {
   justify-content: center;
   align-items: center;
 }
-.menu-box{
+.menu-box {
   width: 50px;
-  .menu-item{
+  .menu-item {
     height: 50px;
-    background: url('../../../SAOIcon/background/btn_normal.png');
+    // background: url('../../../SAOIcon/background/btn_normal.png');
     background-size: cover;
     display: flex;
     justify-content: center;

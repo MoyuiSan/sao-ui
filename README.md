@@ -15,7 +15,7 @@ npm install
 (目前适配PC谷歌浏览器)
 Sao-alert
 ```
-
+npm
 ### 参考项目
 ```
 SAO Utils – SAO风格启动菜单开发日志 | 热风CG工作室（素材样式来源）
