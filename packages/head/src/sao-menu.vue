@@ -26,12 +26,12 @@
 </template>
 <script>
 import $ from "jquery";
-import iconImg from "../../../SAOIcon/background/btn_normal.png";
+// import iconImg from "../../../SAOIcon/background/btn_normal.png";
 export default {
   name: "SaoMenu",
   data() {
     return {
-      iconI: iconImg
+      iconI: require('../../../SAOIcon/background/btn_normal.png')
     };
   },
   created:function(){
