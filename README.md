@@ -5,25 +5,19 @@
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Sao风格组件安装
 ```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
+安装 npm i saoui
 ```
 
-### Run your tests
+### 组件列表
 ```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
+(目前适配PC谷歌浏览器)
+Sao-alert
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### 参考项目
+```
+SAO Utils – SAO风格启动菜单开发日志 | 热风CG工作室（素材样式来源）
+详情http://www.gpbeta.com/post/develop/sao-utils/
+```

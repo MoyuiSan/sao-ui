@@ -1,9 +1,11 @@
 import SaoAlert from './alert/index';
+import SaoMenu from './head/index'
 // 导入单个组件
 
 // 以数组的结构保存组件，便于遍历
 const components = [
-    SaoAlert
+    SaoAlert,
+    SaoMenu
 ]
 
 // 定义 install 方法
