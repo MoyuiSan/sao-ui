@@ -3,23 +3,23 @@
     <div class="menu-box">
       <div
         class="menu-item"
-        :style="'background-image:url(\'/'+iconI+'\')'"
+        :style="'background-image:url(\''+iconI+'\')'"
       >1</div>
       <div
         class="menu-item"
-        :style="'background-image:url(\'/'+iconI+'\')'"
+        :style="'background-image:url(\''+iconI+'\')'"
       >1</div>
       <div
         class="menu-item"
-        :style="'background-image:url(\'/'+iconI+'\')'"
+        :style="'background-image:url(\''+iconI+'\')'"
       >1</div>
       <div
         class="menu-item"
-        :style="'background-image:url(\'/'+iconI+'\')'"
+        :style="'background-image:url(\''+iconI+'\')'"
       >1</div>
       <div
         class="menu-item"
-        :style="'background-image:url(\'/'+iconI+'\')'"
+        :style="'background-image:url(\''+iconI+'\')'"
       >1</div>
     </div>
   </div>
