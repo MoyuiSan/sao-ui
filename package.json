@@ -1,6 +1,6 @@
 {
   "name": "saoui",
-  "version": "1.0.18",
+  "version": "1.0.19",
   "private": false,
   "main": "lib/sao-ui.umd.min.js",
   "scripts": {
