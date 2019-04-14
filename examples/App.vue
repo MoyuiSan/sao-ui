@@ -13,6 +13,7 @@
       <MenuBtn
         slot="btn"
         id='1'
+        :icon="icon"
       >
         <MenuItem>
         </MenuItem>
@@ -58,11 +59,13 @@
 
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
+import iconItem from "./assets/SAOIcon/symbol/info_normal.png";
 export default {
   name: "app",
   data() {
     return {
-      menuSonlist: [{ id: "1", name: "123", link: "/a", imgURl: "112313123" }]
+      menuSonlist: [{ id: "1", name: "123", link: "/a", imgURl: "112313123" }],
+      icon:iconItem
     };
   },
   components: {

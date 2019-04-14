@@ -21,23 +21,28 @@ import iconImg from "../../../SAOIcon/background/btn_normal.png";
 import iconItem from "../../../SAOIcon/symbol/info_normal.png";
 export default {
   name: "MenuBtn",
-  props: ["id"],
+  props: ["id", "icon"],
   data() {
     return {
       iconI: iconImg,
-      icon: iconItem,
+      icon: this.icon,
       isItemMain: false
     };
+  },
+  created: function() {//初始化默认图标
+    if (!this.icon) {
+      this.icon=iconItem
+    }
   },
   mounted: function() {
     // console.log(this.sonlist);
   },
   methods: {
     test: function() {
-      let _this=this
-      let showItem=setTimeout(function() {
+      let _this = this;
+      let showItem = setTimeout(function() {
         _this.isItemMain = true;
-        clearTimeout(showItem)
+        clearTimeout(showItem);
       }, 50);
     },
     reset: function() {
@@ -90,7 +95,7 @@ export default {
   left: 100px;
   height: 200px;
   overflow: scroll;
-  &::-webkit-scrollbar{
+  &::-webkit-scrollbar {
     display: none;
   }
 }
