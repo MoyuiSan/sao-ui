@@ -1,11 +1,15 @@
 import SaoAlert from './alert/index';
 import SaoMenu from './head/index'
+import MenuBtn from './headbtn/index'
+import MenuItem from './headitem/index'
 // 导入单个组件
 
 // 以数组的结构保存组件，便于遍历
 const components = [
     SaoAlert,
-    SaoMenu
+    SaoMenu,
+    MenuBtn,
+    MenuItem
 ]
 
 // 定义 install 方法

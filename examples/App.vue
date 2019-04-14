@@ -8,7 +8,51 @@
       msg="test"
       @comfirm="test"
     /> -->
-    <SaoMenu></SaoMenu>
+
+    <SaoMenu>
+      <MenuBtn
+        slot="btn"
+        id='1'
+      >
+        <MenuItem>
+        </MenuItem>
+        <MenuItem>
+        </MenuItem>
+                <MenuItem>
+        </MenuItem>
+                <MenuItem>
+        </MenuItem>
+                <MenuItem>
+        </MenuItem>
+                <MenuItem>
+        </MenuItem>
+                <MenuItem>
+        </MenuItem>
+                <MenuItem>
+        </MenuItem>
+                <MenuItem>
+        </MenuItem>
+      </MenuBtn>
+      <MenuBtn
+        slot="btn"
+        id='2'
+      >
+        <MenuItem>
+        </MenuItem>
+      </MenuBtn>
+      <MenuBtn
+        slot="btn"
+        id='3'
+      ></MenuBtn>
+      <MenuBtn
+        slot="btn"
+        id='4'
+      ></MenuBtn>
+      <MenuBtn
+        slot="btn"
+        id='5'
+      ></MenuBtn>
+    </SaoMenu>
   </div>
 </template>
 
@@ -17,7 +61,9 @@
 export default {
   name: "app",
   data() {
-    return {};
+    return {
+      menuSonlist: [{ id: "1", name: "123", link: "/a", imgURl: "112313123" }]
+    };
   },
   components: {
     // HelloWorld
@@ -40,10 +86,10 @@ export default {
   margin-top: 60px;
 }
 @font-face {
-  font-family: 'saoUI';
-  src: url('./SAOUIRegular.otf');
+  font-family: "saoUI";
+  src: url("./SAOUIRegular.otf");
 }
-*{
+* {
   font-family: saoUI;
 }
 </style>
