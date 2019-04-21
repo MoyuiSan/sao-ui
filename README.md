@@ -14,6 +14,42 @@ npm install
 ```
 (目前适配PC谷歌浏览器)
 Sao-alert
+<SaoAlert
+      msg="test"
+      @comfirm="test"
+    />
+SaoMenu  
+  <SaoMenu
+        :ShowMask='isShowMenu'
+        ref="mask"
+      >
+        <MenuBtn
+          slot="btn"
+          id='1'
+          system='1'
+        >
+          <MenuItem
+            id="1"
+            to='/a'
+            name='test1'
+          >
+          </MenuItem>
+          <MenuItem
+            id="2"
+            to='/b'
+            name='test2'
+          >
+          </MenuItem>
+        </MenuBtn>
+   </SaoMenu>
+内部开关方法
+ if (this.$refs.mask.isShow == true) {
+        //内部调用开关方法
+        this.$refs.mask.noShow();
+      } else {
+        this.$refs.mask.showMask();
+      }
+
 ```
 npm
 ### 参考项目

@@ -1,5 +1,8 @@
 <template>
-  <div class="mask">
+  <div
+    class="mask"
+    v-show="isShow"
+  >
     <div
       class="menu-box"
       v-if="resetBtn"
@@ -12,12 +15,6 @@
         class="menu-main"
         v-if="isClick"
       ><img :src="indicator">
-        <!-- <div class="menu-main-item">
-          <div v-for="value in menuSonList" :key="value.id">
-            <div class="item"> <img :src="listNomal"></div>
-          </div>
-
-        </div> -->
       </div>
     </div>
   </div>
@@ -35,9 +32,9 @@ export default {
     return {
       reload: this.reload,
       nowMenuitem: "0"
-      // menuSonList: []
     };
   },
+  props: ["ShowMask"],
   data() {
     return {
       nowItem: "0",
@@ -45,12 +42,14 @@ export default {
       listNomal: listNomal,
       resetBtn: true,
       preBtn: {},
-      isClick: false
+      isClick: false,
+      isShow: this.ShowMask
     };
   },
   created: function() {},
   mounted: function() {
     $(".mask").height($(window).height());
+    console.log(this.isShowThis, "sdasdas");
   },
   methods: {
     resetItem: function() {
@@ -61,27 +60,34 @@ export default {
     reload(e) {
       //选项卡重加载
       // this.menuSonList = e.target.list;
-      // console.log(this.$slots.btn);
-      this.resetItem();
-      let _this = this;
-      if (e.target.id) {
-        let showImg = new Promise(function(resolve, reject) {//promise 方法进行异步
+      if (!!e.target.id) {
+        this.resetItem(); //重置图片
+        let id = e.target.id; //当前Id
+        let newTop = (e.target.id - 1) * 50 - 90 + "px"; //图片的当前距离
+        let isImg = !!this.$slots.btn[id - 1].componentInstance.$slots.default; //是否显示图片
+        let _this = this;
+        let showImg = new Promise(function(resolve, reject) {
+          //promise 方法进行异步
           if (_this) {
-            _this.isClick = true;
+            if (isImg) {
+              _this.isClick = true;
+            } else {
+              _this.isClick = false;
+            }
             resolve("ok!");
           } else {
             reject("no _this!");
           }
         });
-        showImg.then(function() {
-          let newTop = (e.target.id - 1) * 50 - 90 + "px";
-          let id = e.target.id;
-          _this.nowMenuitem = id;
-          $(".menu-main").css("top", newTop);
-          _this.preBtn.src = iconImg;
-          _this.preBtn = e.target;
-          e.target.src = iconImgPress;
-        });
+        showImg
+          .then(function() {
+            _this.nowMenuitem = id;
+            $(".menu-main").css("top", newTop);
+            _this.preBtn.src = iconImg;
+            _this.preBtn = e.target;
+            e.target.src = iconImgPress;
+          })
+          .catch(e => {});
         // let showT = setTimeout(function() {//定时器方法
         //   let newTop = (e.target.id - 1) * 50 - 90 + "px";
         //   let id = e.target.id;
@@ -93,6 +99,12 @@ export default {
         //   clearTimeout(showT);
         // }, 10);
       }
+    },
+    noShow: function() {
+      this.isShow = false;
+    },
+    showMask: function() {
+      this.isShow = true;
     }
   }
 };
@@ -108,6 +120,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  min-height: 600;
 }
 .menu-box {
   position: relative;
