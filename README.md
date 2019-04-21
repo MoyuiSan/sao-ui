@@ -13,12 +13,12 @@ npm install
 ### 组件列表
 ```
 (目前适配PC谷歌浏览器)
-Sao-alert
+SaoAlert
 <SaoAlert
       msg="test"
       @comfirm="test"
     />
-SaoMenu  
+SaoMenu(目前尚有BUG)  
   <SaoMenu
         :ShowMask='isShowMenu'
         ref="mask"
