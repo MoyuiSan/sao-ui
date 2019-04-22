@@ -1,24 +1,11 @@
 <template>
-  <div
-    class="mask"
-    v-if="isShow"
-  >
+  <div class="mask" v-if="isShow">
     <div class='main-box'>
       <div class='mes-header'>Message</div>
       <div class='mes-message'>{{this.msg}}</div>
       <div class='mes-contral'>
-        <div class='confirm'><img
-            :src="confirmI"
-            @mouseover="confrimHover"
-            @mouseout="confrimUp"
-            @click="confirmOk"
-          /></div>
-        <div class='cancel'><img
-            :src="cancelI"
-            @mouseover="cancelHover"
-            @mouseout="cancelUp"
-            @click="cancelOk"
-          ></div>
+        <div class='confirm'><img :src="confirmI" @mouseover="confrimHover" @mouseout="confrimUp" @click="confirmOk" /></div>
+        <div class='cancel'><img :src="cancelI" @mouseover="cancelHover" @mouseout="cancelUp" @click="cancelOk"></div>
       </div>
     </div>
   </div>
@@ -40,36 +27,36 @@ export default {
       isShow: true
     };
   },
-  mounted: function() {
+  mounted: function () {
     $(".mask").height($(window).height());
   },
   methods: {
-    confrimHover: function() {
+    confrimHover: function () {
       this.confirmI = ConfirmImgHover;
     },
-    confrimUp: function() {
+    confrimUp: function () {
       this.confirmI = ConfirmImg;
     },
-    cancelHover: function() {
+    cancelHover: function () {
       this.cancelI = CancelImgHover;
     },
-    cancelUp: function() {
+    cancelUp: function () {
       this.cancelI = CancelImg;
     },
-    confirmOk: function() {
+    confirmOk: function () {
       let _this = this;
       $(".mask").fadeOut();
       this.$emit("comfirm");
-      let confirmOkSet = setTimeout(function() {
+      let confirmOkSet = setTimeout(function () {
         _this.isShow = false;
         clearTimeout(confirmOkSet);
       }, 500);
     },
-    cancelOk: function() {
+    cancelOk: function () {
       let _this = this;
       $(".mask").fadeOut();
       this.$emit("cancel");
-      let confirmOkSet = setTimeout(function() {
+      let confirmOkSet = setTimeout(function () {
         _this.isShow = false;
         clearTimeout(confirmOkSet);
       }, 500);

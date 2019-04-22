@@ -1,12 +1,6 @@
 <template slot-scope='show'>
-  <div
-    class="menu-item-son"
-    @click="test"
-  >
-    <img
-      :src="listNomal"
-      alt="背景"
-    >
+  <div class="menu-item-son" @click="test">
+    <img :src="listNomal" alt="背景">
     <!-- <div>{{this.name}}</div> -->
     <slot>{{name}}</slot>
     <!-- {{show}} -->
@@ -23,9 +17,9 @@ export default {
     };
   },
   props: ["id", "to", "name"],
-  mounted: function() {},
+  mounted: function () { },
   methods: {
-    test: function() {
+    test: function () {
       this.$router.push(this.to);
       // $(".mask").hide();
     }

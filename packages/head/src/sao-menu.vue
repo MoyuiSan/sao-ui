@@ -1,20 +1,10 @@
 <template>
-  <div
-    class="mask"
-    v-show="isShow"
-  >
-    <div
-      class="menu-box"
-      v-if="resetBtn"
-      @click="reload"
-    >
+  <div class="mask" v-show="isShow">
+    <div class="menu-box" v-if="resetBtn" @click="reload">
       <div>
         <slot name='btn'></slot>
       </div>
-      <div
-        class="menu-main"
-        v-if="isClick"
-      ><img :src="indicator">
+      <div class="menu-main" v-if="isClick"><img :src="indicator">
       </div>
     </div>
   </div>
@@ -46,13 +36,13 @@ export default {
       isShow: this.ShowMask
     };
   },
-  created: function() {},
-  mounted: function() {
+  created: function () { },
+  mounted: function () {
     $(".mask").height($(window).height());
     console.log(this.isShowThis, "sdasdas");
   },
   methods: {
-    resetItem: function() {
+    resetItem: function () {
       for (let i = 0; i < this.$slots.btn.length; i++) {
         this.$slots.btn[i].componentInstance.reset();
       }
@@ -66,7 +56,7 @@ export default {
         let newTop = (e.target.id - 1) * 50 - 90 + "px"; //图片的当前距离
         let isImg = !!this.$slots.btn[id - 1].componentInstance.$slots.default; //是否显示图片
         let _this = this;
-        let showImg = new Promise(function(resolve, reject) {
+        let showImg = new Promise(function (resolve, reject) {
           //promise 方法进行异步
           if (_this) {
             if (isImg) {
@@ -80,14 +70,14 @@ export default {
           }
         });
         showImg
-          .then(function() {
+          .then(function () {
             _this.nowMenuitem = id;
             $(".menu-main").css("top", newTop);
             _this.preBtn.src = iconImg;
             _this.preBtn = e.target;
             e.target.src = iconImgPress;
           })
-          .catch(e => {});
+          .catch(e => { });
         // let showT = setTimeout(function() {//定时器方法
         //   let newTop = (e.target.id - 1) * 50 - 90 + "px";
         //   let id = e.target.id;
@@ -100,10 +90,10 @@ export default {
         // }, 10);
       }
     },
-    noShow: function() {
+    noShow: function () {
       this.isShow = false;
     },
-    showMask: function() {
+    showMask: function () {
       this.isShow = true;
     }
   }

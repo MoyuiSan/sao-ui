@@ -1,3 +1,5 @@
+
+const CompressionPlugin = require("compression-webpack-plugin")
 module.exports = {
     //...
     publicPath: './',//打包的默认路径
@@ -23,6 +25,19 @@ module.exports = {
             })
             .end()
     },
-    lintOnSave: false
+    lintOnSave: false,
+    // configureWebpack: config => {
+    //     if (progress.env.NODE_ENV === 'production') {
+    //         return {
+    //             plugins: [
+    //                 new CompressionPlugin({
+    //                     test: /\.js$|\.html$|.\css/, //匹配文件名
+    //                     threshold: 10240,//对超过10k的数据压缩
+    //                     deleteOriginalAssets: false //不删除源文件
+    //                 })
+    //             ]
+    //         }
+    //     }
+    // },
 
 }

@@ -1,8 +1,5 @@
 <template>
-  <div
-    id="app"
-    @dblclick="showMenu"
-  >
+  <div id="app" @dblclick="showMenu">
     <!-- <img
       alt="Vue logo"
       src="./assets/logo.png"
@@ -11,27 +8,12 @@
       msg="test"
       @comfirm="test"
     /> -->
-    <!-- <div>
-      <SaoMenu
-        :ShowMask='isShowMenu'
-        ref="mask"
-      >
-        <MenuBtn
-          slot="btn"
-          id='1'
-          system='1'
-        >
-          <MenuItem
-            id="1"
-            to='/a'
-            name='test1'
-          >
+    <div>
+      <SaoMenu :ShowMask='isShowMenu' ref="mask">
+        <MenuBtn slot="btn" id='1' system='1'>
+          <MenuItem id="1" to='/a' name='test1'>
           </MenuItem>
-          <MenuItem
-            id="2"
-            to='/b'
-            name='test2'
-          >
+          <MenuItem id="2" to='/b' name='test2'>
           </MenuItem>
           <MenuItem id="3">
           </MenuItem>
@@ -48,39 +30,19 @@
           <MenuItem id="9">
           </MenuItem>
         </MenuBtn>
-        <MenuBtn
-          slot="btn"
-          id='2'
-          system='2'
-        >
+        <MenuBtn slot="btn" id='2' system='2'>
           <MenuItem>
           </MenuItem>
         </MenuBtn>
-        <MenuBtn
-          slot="btn"
-          id='3'
-          system='3'
-        >
-          <MenuItem
-            id="1"
-            to='/a'
-            name='test1'
-          >
+        <MenuBtn slot="btn" id='3' system='3'>
+          <MenuItem id="1" to='/a' name='test1'>
           </MenuItem>
         </MenuBtn>
-        <MenuBtn
-          slot="btn"
-          id='4'
-          system='4'
-        ></MenuBtn>
-        <MenuBtn
-          slot="btn"
-          id='5'
-          system='5'
-        ></MenuBtn>
+        <MenuBtn slot="btn" id='4' system='4'></MenuBtn>
+        <MenuBtn slot="btn" id='5' system='5'></MenuBtn>
       </SaoMenu>
-    </div> -->
-
+    </div>
+    <MusicBox></MusicBox>
     <router-view></router-view>
     <!-- <router-link to='/a'>a</router-link>
         <router-link to='/b'>b</router-link>
@@ -102,7 +64,7 @@ export default {
       isShowMenu: false
     };
   },
-  mounted: function() {
+  mounted: function () {
     console.log(this.$refs.mask);
     $("#app").css("height", $(window).height());
   },
@@ -110,7 +72,7 @@ export default {
     // HelloWorld
   },
   methods: {
-    showMenu: function() {
+    showMenu: function () {
       if (this.$refs.mask.isShow == true) {
         //内部调用开关方法
         this.$refs.mask.noShow();

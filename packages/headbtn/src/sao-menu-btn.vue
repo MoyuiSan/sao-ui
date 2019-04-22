@@ -1,17 +1,8 @@
 <template>
-  <div
-    class="menu-item"
-    @click="test"
-  >
-    <div class="item_bottom"><img
-        :src="iconI"
-        :id='id'
-      ></div>
+  <div class="menu-item" @click="test">
+    <div class="item_bottom"><img :src="iconI" :id='id'></div>
     <div class="item_icon"><img :src="icon"></div>
-    <div
-      class="item_main"
-      v-if="isItemMain"
-    >
+    <div class="item_main" v-if="isItemMain">
       <slot></slot>
     </div>
   </div>
@@ -34,8 +25,8 @@ export default {
       isItemMain: false
     };
   },
-  created: function() {
-    let now = this.system;
+  created: function () {
+    let now = this.system;//id选择按钮,默认为5个。
     if (now == 1) {
       this.icon = infoItem;
     } else if (now == 2) {
@@ -47,35 +38,19 @@ export default {
     } else if (now == 5) {
       this.icon = settingItem;
     }
-    // switch (this.system) {
-    //   case "1": {
-    //     this.icon = infoItem;
-    //   }
-    //   case "2": {
-    //     this.icon = msgItem;
-    //   }
-    //   case "3": {
-    //     this.icon = partyItem;
-    //   }
-    //   case "4": {
-    //     this.icon = pluginItem;
-    //   }
-    //   case "5": {
-    //     this.icon = settingItem;
-    //   }
-    // }
   },
-  mounted: function() {
+  mounted: function () {
   },
   methods: {
-    test: function() {
+    test: function () {//打开选项卡
       let _this = this;
-      let showItem = setTimeout(function() {
+      let showItem = setTimeout(function () {
         _this.isItemMain = true;
         clearTimeout(showItem);
       }, 50);
     },
-    reset: function() {
+    //重置按钮
+    reset: function () {
       this.isItemMain = false;
     }
   }
