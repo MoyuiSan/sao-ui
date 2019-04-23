@@ -42,7 +42,7 @@ SaoMenu(目前尚有BUG)
           </MenuItem>
         </MenuBtn>
    </SaoMenu>
-内部开关方法
+ 内部开关方法
  if (this.$refs.mask.isShow == true) {
         //内部调用开关方法
         this.$refs.mask.noShow();
