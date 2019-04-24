@@ -9,7 +9,7 @@
     </div>
     <div class="music-mes">
       <div class="music-mes-title">
-        <p>歌名:dadasd 歌手:啊的阿斯大萨</p>
+        <p>歌名:fight! 歌手:动漫原声</p>
       </div>
       <div class="contral" @mouseleave="noTime">
         <canvas class="ctl-1" id="myCtl" width="140" height="30" @mousemove="test" @click="timeGo"></canvas>
@@ -30,7 +30,7 @@
     <div v-show="false">
       <audio id="myAudio" controls>
         <!-- <source src="../../../SAOIcon/music/LiSA.mp3" type="audio/mpeg"> -->
-        <source src="//m10.music.126.net/20190423123228/c815294f5af60e56b78593ba13de93fa/ymusic/873c/caed/6c28/179f88e4ac59bcc8094b6380c90cc100.mp3" type="audio/mpeg">
+        <source :src="nowMusicUrl" type="audio/mpeg">
       </audio>
     </div>
   </div>
@@ -54,11 +54,11 @@ export default {
     return {
       imgUrl: imgURL,
       moreCtl: moreCTL,
-      ctl1:ctl1,
-      ctl2:ctl2,
-      ctl3:ctl3,
-      ctl4:ctl4,
-      ctl5:ctl5,
+      ctl1: ctl1,
+      ctl2: ctl2,
+      ctl3: ctl3,
+      ctl4: ctl4,
+      ctl5: ctl5,
       selTime: false,
       musicList: [],
       musicLength: "0:00",
@@ -70,9 +70,11 @@ export default {
       playImg: playURL,
       pauseImg: pauseURL,
       musicStatus: true,
-      isMusicCtl: false
+      isMusicCtl: false,
+      nowMusicUrl: ""
     }
   },
+  props: ['musicurl'],
   mounted: function () {
     this.myProgress();
     let x = document.getElementById("myAudio")
@@ -90,6 +92,13 @@ export default {
       // }, 1000);
       clearTimeout(wait)
     }, 200)
+    if (!!this.musicList[0]) {
+      console.log(this.musicurl[0], 'lalalal');
+      this.nowMusicUrl = this.musicurl[0].url;
+    } else {
+      console.log(this.musicurl, 'lalalal');
+      this.nowMusicUrl = "//96.f.1ting.com/5cbed9e1/410e916b4ea384a5ee5c3d8465f81827/zzzzzmp3/2013aJan/23D/23ostsao/25.mp3";
+    }
 
   },
   methods: {

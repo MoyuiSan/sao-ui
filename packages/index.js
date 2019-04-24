@@ -3,6 +3,7 @@ import SaoMenu from './head/index'
 import MenuBtn from './headbtn/index'
 import MenuItem from './headitem/index'
 import MusicBox from './music/index'
+import ShareWall from './sharewall/index'
 // 导入单个组件
 
 // 以数组的结构保存组件，便于遍历
@@ -11,7 +12,8 @@ const components = [
     SaoMenu,
     MenuBtn,
     MenuItem,
-    MusicBox
+    MusicBox,
+    ShareWall
 ]
 
 // 定义 install 方法

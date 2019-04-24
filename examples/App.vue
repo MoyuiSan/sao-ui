@@ -8,7 +8,7 @@
       msg="test"
       @comfirm="test"
     /> -->
-    <div>
+    <!-- <div>
       <SaoMenu :ShowMask='isShowMenu' ref="mask">
         <MenuBtn slot="btn" id='1' system='1'>
           <MenuItem id="1" to='/a' name='test1'>
@@ -41,7 +41,7 @@
         <MenuBtn slot="btn" id='4' system='4'></MenuBtn>
         <MenuBtn slot="btn" id='5' system='5'></MenuBtn>
       </SaoMenu>
-    </div>
+    </div> -->
     <MusicBox></MusicBox>
     <router-view></router-view>
     <!-- <router-link to='/a'>a</router-link>
@@ -61,7 +61,10 @@ export default {
       menuSonlist: [{ id: "1", name: "123", link: "/a", imgURl: "112313123" }],
       icon: iconItem,
       ishow: true,
-      isShowMenu: false
+      isShowMenu: false,
+      musicList: [{ url: '//96.f.1ting.com/5cbedeaf/2ac3ae4cb2f47eabdb8744c0d52f5c8e/zzzzzmp3/2013eMay/06D/06sao/17.mp3', name: 'Yui', actor: '未知' },
+      { url: '//96.f.1ting.com/5cbedeaf/2ac3ae4cb2f47eabdb8744c0d52f5c8e/zzzzzmp3/2013eMay/06D/06sao/17.mp3', name: 'Yui', actor: '未知' },
+      { url: '//96.f.1ting.com/5cbedeaf/2ac3ae4cb2f47eabdb8744c0d52f5c8e/zzzzzmp3/2013eMay/06D/06sao/17.mp3', name: 'Yui', actor: '未知' }]
     };
   },
   mounted: function () {
