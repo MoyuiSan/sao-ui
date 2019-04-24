@@ -44,12 +44,14 @@ confirm:提交事件
    </SaoMenu>
 ```
  内部开关方法
+ ```
  if (this.$refs.mask.isShow == true) {
         //内部调用开关方法
         this.$refs.mask.noShow();
       } else {
         this.$refs.mask.showMask();
       }
+```
 3.MusicBox(初级模板版本1.0.0)  
 ```
 <MusicBox></MusicBox>
