@@ -1,5 +1,5 @@
 <template>
-  <div class="music-box">
+  <div class="music-box"  draggable="true">
     <div class="music-img" @click="Audionoff" @mouseover="showHoverImg" @mouseleave="hideHoverImg">
       <img :src="imgUrl" alt="SaoMusic" />
       <div class="posImg" v-if="isPlay">
@@ -71,7 +71,8 @@ export default {
       pauseImg: pauseURL,
       musicStatus: true,
       isMusicCtl: false,
-      nowMusicUrl: ""
+      nowMusicUrl: "",
+      isDialog: false
     }
   },
   props: ['musicurl'],
@@ -183,7 +184,10 @@ export default {
         this.isMusicCtl = false;
       }
 
-    }
+    },
+    myDialog: function (e) {
+        console.log(e);
+    },
   }
 };
 </script>

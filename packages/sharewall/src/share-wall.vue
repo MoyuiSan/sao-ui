@@ -1,13 +1,13 @@
 <template>
   <div class="mask">
-    <div class="img-box" @click="selectImg">
+    <div class="img-box" @click="selectImg" @mouseover="test">
       <img :src="img1" class="imgbox1" id='1' />
       <img :src="img2" class="imgbox2" id='2' />
       <img :src="img3" class="imgbox3" id='3' />
       <img :src="img4" class="imgbox4" id='4' />
       <img :src="img5" class="imgbox5" id='5' />
     </div>
-    <div class="back-img">
+    <div class="back-img" v-if="resetImg">
       <img :src="backImg" />
     </div>
   </div>
@@ -28,27 +28,44 @@ export default {
       img3: img3,
       img4: img4,
       img5: img5,
-      backImg: img2
+      backImg: img2,
+      resetImg: true
     }
   },
   props: [],
   mounted: function () {
-    $(".mask").css('height', $(window).height())
-    $(".back-img").css('height', $(window).height())
+    $(".mask").css('height', $(window).height());
+    $(".back-img").css('height', $(window).height());
   },
   methods: {
     selectImg(e) {
-      let id = e.target.id
-      console.log(id)
-      if (id == 1) {
-        this.backImg = img1;
-      } else if (id == 2) {
-        this.backImg = img2;
-      } else if (id == 3) {
-        this.backImg = img3;
-      } else if (id == 4) {
-        this.backImg = img4;
-      } else if (id == 5) { this.backImg = img5; }
+      let id = e.target.id;
+      console.log(id);
+      this.resetImg = false;
+      let _this=this;
+      let timer = setTimeout(function () {
+        if (id == 1) {
+          _this.backImg = img1;
+        } else if (id == 2) {
+          _this.backImg = img2;
+        } else if (id == 3) {
+          _this.backImg = img3;
+        } else if (id == 4) {
+          _this.backImg = img4;
+        } else if (id == 5) {
+          _this.backImg = img5;
+        }
+        _this .resetImg = true;
+        clearTimeout(timer)
+      }, 100)
+    },
+    test(e) {
+      if (!!e.target.id) {
+        $(".img-box img").css('animation-play-state', 'paused');
+      } else {
+        $(".img-box img").css('animation-play-state', 'running');
+      }
+
     }
   }
 }
@@ -115,7 +132,7 @@ export default {
     left: 0;
     width: 100%;
     overflow: hidden;
-    animation: fadeIn .4s linear;
+    animation: fadeIn 0.4s linear;
     img {
       width: 100%;
       height: 100%;
