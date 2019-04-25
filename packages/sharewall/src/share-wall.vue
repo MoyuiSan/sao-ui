@@ -1,5 +1,5 @@
 <template>
-  <div class="mask">
+  <div class="mask" @mousemove="saotxt">
     <div class="img-box" @click="selectImg" @mouseover="test">
       <img :src="img1" class="imgbox1" id='1' />
       <img :src="img2" class="imgbox2" id='2' />
@@ -10,6 +10,7 @@
     <div class="back-img" v-if="resetImg">
       <img :src="backImg" />
     </div>
+    <div class="back-txt">这虽然是游戏，可不是闹着玩的！</div>
   </div>
 </template>
 <script>
@@ -70,6 +71,12 @@ export default {
       } else {
         $(".img-box img").css('animation-play-state', 'running');
       }
+
+    },
+    saotxt(e) {
+      // console.log(e.clientX)
+      $(".back-txt").css('left', e.clientX);
+      $(".back-txt").css('top', e.clientY);
 
     }
   }
@@ -142,6 +149,15 @@ export default {
       width: 100%;
       height: 100%;
     }
+  }
+  .back-txt {
+    position: fixed;
+    font-size: 20px;
+    color: white;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    transition: top 0.5s ease-in-out,left 0.5s ease-in-out;
   }
 }
 @keyframes test {
