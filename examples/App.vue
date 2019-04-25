@@ -42,8 +42,8 @@
         <MenuBtn slot="btn" id='5' system='5'></MenuBtn>
       </SaoMenu>
     </div> -->
-    <MusicBox></MusicBox>
-    <!-- <ShareWall></ShareWall> -->
+    <!-- <MusicBox></MusicBox> -->
+    <ShareWall></ShareWall>
     <router-view></router-view>
     <!-- <router-link to='/a'>a</router-link>
         <router-link to='/b'>b</router-link>
@@ -71,6 +71,7 @@ export default {
   mounted: function () {
     console.log(this.$refs.mask);
     $("#app").css("height", $(window).height());
+    console.log(this.$store.state.items)
   },
   components: {
     // HelloWorld

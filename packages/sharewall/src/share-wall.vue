@@ -37,27 +37,32 @@ export default {
     $(".mask").css('height', $(window).height());
     $(".back-img").css('height', $(window).height());
   },
+  updated: function () {
+    $(".back-img").css('height', $(window).height());
+  },
   methods: {
     selectImg(e) {
       let id = e.target.id;
       console.log(id);
-      this.resetImg = false;
-      let _this=this;
-      let timer = setTimeout(function () {
-        if (id == 1) {
-          _this.backImg = img1;
-        } else if (id == 2) {
-          _this.backImg = img2;
-        } else if (id == 3) {
-          _this.backImg = img3;
-        } else if (id == 4) {
-          _this.backImg = img4;
-        } else if (id == 5) {
-          _this.backImg = img5;
-        }
-        _this .resetImg = true;
-        clearTimeout(timer)
-      }, 100)
+      if (!!e.target.id) {
+        this.resetImg = false;
+        let _this = this;
+        let timer = setTimeout(function () {
+          if (id == 1) {
+            _this.backImg = img1;
+          } else if (id == 2) {
+            _this.backImg = img2;
+          } else if (id == 3) {
+            _this.backImg = img3;
+          } else if (id == 4) {
+            _this.backImg = img4;
+          } else if (id == 5) {
+            _this.backImg = img5;
+          }
+          _this.resetImg = true;
+          clearTimeout(timer)
+        }, 100)
+      }
     },
     test(e) {
       if (!!e.target.id) {
@@ -75,7 +80,7 @@ export default {
   position: relative;
   width: 100%;
   background-color: #c0c0c0;
-  //   background: url(../../../SAOIcon/img/share1.png);
+  // background: url(../../../SAOIcon/img/share1.png);
   background-size: cover;
   display: flex;
   justify-content: center;
