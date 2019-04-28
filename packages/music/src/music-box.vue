@@ -15,7 +15,7 @@
         <canvas class="ctl-1" id="myCtl" width="140" height="30" @mousemove="test" @click="timeGo"></canvas>
         <div class="ctl-2">
           <div class="prorgess">{{musicNow}}/{{musicLength}}</div>
-          <div class="more" @click="showMusicCtl"><img :src="moreCtl"></div>
+          <div class="more" @click="showMusicCtl"><img :src="moreCtl" /></div>
         </div>
         <span v-if="selTime">{{formatSelectTime}}</span>
       </div>
@@ -228,10 +228,10 @@ export default {
   }
   .music-mes {
     width: 220px;
-    height: 25px;
+    height: 60px;
     .music-mes-title {
       width: 215px;
-      height: inherit;
+      height: 25px;
       margin-top: 5px;
       font-size: 14px;
       overflow: hidden;
