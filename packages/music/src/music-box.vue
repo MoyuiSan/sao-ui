@@ -38,7 +38,7 @@
 <script>
 // 初代播放器版本1.0
 import $ from 'jquery'
-import imgURL from "../../../public/SAOIcon/img/img1.jpg"
+import imgURL from "~../../../public/SAOIcon/img/img1.jpg"
 import moreCTL from "../../../public/SAOIcon/icon/equipment_normal.png"
 import playURL from "../../../public/SAOIcon/img/img2.jpg"
 import pauseURL from "../../../public/SAOIcon/img/img3.jpg"
