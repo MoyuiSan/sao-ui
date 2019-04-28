@@ -202,6 +202,7 @@ export default {
   z-index: 900;
   top: 0px;
   left: 5px;
+  background:url('../../../SAOIcon/img/img1.jpg');
   .music-img {
     display: flex;
     position: relative;

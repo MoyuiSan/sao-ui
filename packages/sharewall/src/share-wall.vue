@@ -30,7 +30,9 @@ export default {
       img4: img4,
       img5: img5,
       backImg: img2,
-      resetImg: true
+      resetImg: true,
+      mouseX: '',
+      mouseY: ''
     }
   },
   props: [],
@@ -74,9 +76,17 @@ export default {
 
     },
     saotxt(e) {
-      // console.log(e.clientX)
-      $(".back-txt").css('left', e.clientX);
-      $(".back-txt").css('top', e.clientY);
+      console.log(e.clientX)
+      this.mouseX = e.clientX;
+      this.mouseY = e.clientY;
+      let _this = this;
+      let timer = setTimeout(function () {
+        if (_this.mouseX == e.clientX) {
+          $(".back-txt").css('left', _this.mouseX+20);
+          $(".back-txt").css('top', _this.mouseY);
+        }
+      }, 20);
+
 
     }
   }
@@ -157,7 +167,8 @@ export default {
     top: 0;
     left: 0;
     z-index: 999;
-    transition: top 0.5s ease-in-out,left 0.5s ease-in-out;
+    transition: top 0.5s ease-in-out, left 0.5s ease-in-out;
+    font-weight: 900;
   }
 }
 @keyframes test {
