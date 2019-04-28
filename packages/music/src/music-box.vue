@@ -27,12 +27,10 @@
       <div class="music-ctl-item"><img :src="ctl4" /></div>
       <div class="music-ctl-item"><img :src="ctl5" /></div>
     </div>
-    <div v-show="false" class="nothing">
-      <audio id="myAudio" controls>
+      <audio id="myAudio" controls v-show="false">
         <!-- <source src="../../../SAOIcon/music/LiSA.mp3" type="audio/mpeg"> -->
         <source :src="nowMusicUrl" type="audio/mpeg">
       </audio>
-    </div>
   </div>
 </template>
 <script>
@@ -348,10 +346,10 @@ export default {
       background-color: black;
     }
   }
-  .nothing{
+  #myAudio{
     position:absolute;
     z-index: -1;
-    top: 0;
+    top: 100;
     left: 0;
   }
 }
