@@ -11,7 +11,7 @@
       <div class="music-mes-title">
         <p>歌名:fight! 歌手:动漫原声</p>
       </div>
-      <div class="contral" @mouseleave="noTime">
+      <div class="music-mes-contral" @mouseleave="noTime">
         <canvas class="ctl-1" id="myCtl" width="140" height="30" @mousemove="test" @click="timeGo"></canvas>
         <div class="ctl-2">
           <div class="prorgess">{{musicNow}}/{{musicLength}}</div>
@@ -253,7 +253,7 @@ export default {
         animation: textgo 5s infinite linear;
       }
     }
-    .contral {
+    .music-mes-contral {
       width: 215px;
       height: 25px;
       display: flex;
