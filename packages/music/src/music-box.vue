@@ -202,7 +202,7 @@ export default {
   z-index: 900;
   top: 0px;
   left: 5px;
-  background:url('../../../public/SAOIcon/icon/skills_normal.png') no-repeat;
+  // background:url('../../../public/SAOIcon/icon/skills_normal.png') no-repeat;
   .music-img {
     display: flex;
     position: relative;
@@ -229,6 +229,7 @@ export default {
   .music-mes {
     width: 220px;
     height: 60px;
+    position: relative;
     display: flex;
     flex-direction: column;
     .music-mes-title {
@@ -256,6 +257,7 @@ export default {
       width: 215px;
       height: 25px;
       display: flex;
+      position: relative;
       .ctl-1 {
         position: relative;
         width: 135px;
@@ -290,7 +292,7 @@ export default {
         font-size: 12px;
         top: 0px;
         left: 0px;
-        // transition: left .3s ease-in;
+        transition: left .1s linear;
       }
     }
   }

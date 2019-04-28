@@ -31,35 +31,17 @@ module.exports = {
             }
         }
     },
-    // 压缩图片
+    // 图片处理
     chainWebpack: config => {
+        
         config.module
             .rule('images')
             .use('url-loader')
             .loader('url-loader')
             .tap(options => Object.assign(options, {
-                limit: 1024000
+                limit: 102400000
             }))
-            // .use('image-webpack-loader')
-            // .loader('image-webpack-loader')
-            // .options({
-            //     bypassOnDebug: true
-            // })
-            // .end()
     },
     lintOnSave: false
-    // configureWebpack: config => {
-    //     if (progress.env.NODE_ENV === 'production') {
-    //         return {
-    //             plugins: [
-    //                 new CompressionPlugin({
-    //                     test: /\.js$|\.html$|.\css/, //匹配文件名
-    //                     threshold: 10240,//对超过10k的数据压缩
-    //                     deleteOriginalAssets: false //不删除源文件
-    //                 })
-    //             ]
-    //         }
-    //     }
-    // },
 
 }
