@@ -1,5 +1,5 @@
 <template>
-  <div class="music-box" draggable="true">
+  <div class="music-box"  draggable="true">
     <div class="music-img" @click="Audionoff" @mouseover="showHoverImg" @mouseleave="hideHoverImg">
       <img :src="imgUrl" alt="SaoUI" />
       <div class="posImg" v-if="isPlay">
@@ -11,7 +11,7 @@
       <div class="music-mes-title">
         <p>歌名:fight! 歌手:动漫原声</p>
       </div>
-      <div class="music-mes-contral" @mouseleave="noTime">
+      <div class="contral" @mouseleave="noTime">
         <canvas class="ctl-1" id="myCtl" width="140" height="30" @mousemove="test" @click="timeGo"></canvas>
         <div class="ctl-2">
           <div class="prorgess">{{musicNow}}/{{musicLength}}</div>
@@ -186,7 +186,7 @@ export default {
 
     },
     myDialog: function (e) {
-      console.log(e);
+        console.log(e);
     },
   }
 };
@@ -253,7 +253,7 @@ export default {
         animation: textgo 5s infinite linear;
       }
     }
-    .music-mes-contral {
+    .contral {
       width: 215px;
       height: 25px;
       display: flex;
@@ -292,7 +292,7 @@ export default {
         font-size: 12px;
         top: 0px;
         left: 0px;
-        transition: left 0.1s linear;
+        transition: left .1s linear;
       }
     }
   }
@@ -347,12 +347,6 @@ export default {
       top: 20px;
       background-color: black;
     }
-  }
-  #myAudio {
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: -1;
   }
 }
 @keyframes textgo {
