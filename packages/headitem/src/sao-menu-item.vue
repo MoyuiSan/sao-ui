@@ -8,7 +8,7 @@
 </template>
 <script>
 import $ from "jquery";
-import listNomal from "../../../SAOIcon/background/list_normal.png";
+import listNomal from "../../../public/SAOIcon/background/list_normal.png";
 export default {
   name: "MenuItem",
   data() {

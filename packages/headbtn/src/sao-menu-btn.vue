@@ -9,12 +9,12 @@
 </template>
 <script>
 import $ from "jquery";
-import iconImg from "../../../SAOIcon/background/btn_normal.png";
-import infoItem from "../../../SAOIcon/symbol/info_normal.png";
-import msgItem from "../../../SAOIcon/symbol/Msg_normal.png";
-import partyItem from "../../../SAOIcon/symbol/Party_normal.png";
-import pluginItem from "../../../SAOIcon/symbol/plugin_normal.png";
-import settingItem from "../../../SAOIcon/symbol/setting_normal.png";
+import iconImg from "../../../public/SAOIcon/background/btn_normal.png";
+import infoItem from "../../../public/SAOIcon/symbol/info_normal.png";
+import msgItem from "../../../public/SAOIcon/symbol/Msg_normal.png";
+import partyItem from "../../../public/SAOIcon/symbol/Party_normal.png";
+import pluginItem from "../../../public/SAOIcon/symbol/plugin_normal.png";
+import settingItem from "../../../public/SAOIcon/symbol/setting_normal.png";
 export default {
   name: "MenuBtn",
   props: ["id", "system"],

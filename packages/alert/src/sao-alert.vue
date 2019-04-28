@@ -12,10 +12,10 @@
 </template>
 <script>
 import $ from "jquery";
-import ConfirmImg from "../../../SAOIcon/icon/ok_normal.png";
-import CancelImg from "../../../SAOIcon/icon/cancel_normal.png";
-import ConfirmImgHover from "../../../SAOIcon/icon/ok_hover.png";
-import CancelImgHover from "../../../SAOIcon/icon/cancel_hover.png";
+import ConfirmImg from "../../../public/SAOIcon/icon/ok_normal.png";
+import CancelImg from "../../../public/SAOIcon/icon/cancel_normal.png";
+import ConfirmImgHover from "../../../public/SAOIcon/icon/ok_hover.png";
+import CancelImgHover from "../../../public/SAOIcon/icon/cancel_hover.png";
 export default {
   name: "SaoAlert",
   props: ["msg", "confirmImg", "cancelImg"],

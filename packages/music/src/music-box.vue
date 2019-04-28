@@ -1,7 +1,7 @@
 <template>
   <div class="music-box"  draggable="true">
     <div class="music-img" @click="Audionoff" @mouseover="showHoverImg" @mouseleave="hideHoverImg">
-      <img :src="imgUrl" alt="SaoMusic" />
+      <img :src="imgUrl" alt="SaoUI" />
       <div class="posImg" v-if="isPlay">
         <img :src="playImg" alt="" v-if="musicStatus" />
         <img :src="pauseImg" alt="" v-if="!musicStatus" />
@@ -39,14 +39,14 @@
 // 初代播放器版本1.0
 import $ from 'jquery'
 import imgURL from "../../../public/SAOIcon/img/img1.jpg"
-import moreCTL from "../../../SAOIcon/icon/equipment_normal.png"
-import playURL from "../../../SAOIcon/img/img2.jpg"
-import pauseURL from "../../../SAOIcon/img/img3.jpg"
-import ctl1 from "../../../SAOIcon/icon/run_normal.png"
-import ctl2 from "../../../SAOIcon/icon/skills_normal.png"
-import ctl3 from "../../../SAOIcon/icon/modify_normal.png"
-import ctl4 from "../../../SAOIcon/icon/help_normal.png"
-import ctl5 from "../../../SAOIcon/icon/option_normal.png"
+import moreCTL from "../../../public/SAOIcon/icon/equipment_normal.png"
+import playURL from "../../../public/SAOIcon/img/img2.jpg"
+import pauseURL from "../../../public/SAOIcon/img/img3.jpg"
+import ctl1 from "../../../public/SAOIcon/icon/run_normal.png"
+import ctl2 from "../../../public/SAOIcon/icon/skills_normal.png"
+import ctl3 from "../../../public/SAOIcon/icon/modify_normal.png"
+import ctl4 from "../../../public/SAOIcon/icon/help_normal.png"
+import ctl5 from "../../../public/SAOIcon/icon/option_normal.png"
 
 export default {
   name: "MusicBox",
@@ -202,7 +202,7 @@ export default {
   z-index: 900;
   top: 0px;
   left: 5px;
-  background:url('../../../SAOIcon/img/img1.jpg');
+  background:url('../../../public/SAOIcon/img/img1.jpg');
   .music-img {
     display: flex;
     position: relative;
@@ -229,6 +229,8 @@ export default {
   .music-mes {
     width: 220px;
     height: 60px;
+    display: flex;
+    flex-direction: column;
     .music-mes-title {
       position: relative;
       width: 215px;

@@ -15,11 +15,11 @@
 </template>
 <script>
 import $ from 'jquery';
-import img1 from "../../../SAOIcon/img/share1.png"
-import img2 from "../../../SAOIcon/img/share2.png"
-import img3 from "../../../SAOIcon/img/share3.jpg"
-import img4 from "../../../SAOIcon/img/share4.png"
-import img5 from "../../../SAOIcon/img/share5.jpg"
+import img1 from "../../../public/SAOIcon/img/share1.png"
+import img2 from "../../../public/SAOIcon/img/share2.png"
+import img3 from "../../../public/SAOIcon/img/share3.jpg"
+import img4 from "../../../public/SAOIcon/img/share4.png"
+import img5 from "../../../public/SAOIcon/img/share5.jpg"
 export default {
   name: "ShareWall",
   data() {
@@ -97,7 +97,7 @@ export default {
   position: relative;
   width: 100%;
   background-color: #c0c0c0;
-  // background: url(../../../SAOIcon/img/share1.png);
+  // background: url(../../../public/SAOIcon/img/share1.png);
   background-size: cover;
   display: flex;
   justify-content: center;

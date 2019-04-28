@@ -11,10 +11,10 @@
 </template>
 <script>
 import $ from "jquery";
-import iconImg from "../../../SAOIcon/background/btn_normal.png";
-import iconImgPress from "../../../SAOIcon/background/btn_press.png";
-import indicator from "../../../SAOIcon/etc/indicator.png";
-import listNomal from "../../../SAOIcon/background/list_normal.png";
+import iconImg from "../../../public/SAOIcon/background/btn_normal.png";
+import iconImgPress from "../../../public/SAOIcon/background/btn_press.png";
+import indicator from "../../../public/SAOIcon/etc/indicator.png";
+import listNomal from "../../../public/SAOIcon/background/list_normal.png";
 export default {
   name: "SaoMenu",
   provide() {
