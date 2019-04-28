@@ -27,7 +27,7 @@
       <div class="music-ctl-item"><img :src="ctl4" /></div>
       <div class="music-ctl-item"><img :src="ctl5" /></div>
     </div>
-    <div v-show="false">
+    <div v-show="false" class="nothing">
       <audio id="myAudio" controls>
         <!-- <source src="../../../SAOIcon/music/LiSA.mp3" type="audio/mpeg"> -->
         <source :src="nowMusicUrl" type="audio/mpeg">
@@ -347,6 +347,12 @@ export default {
       top: 20px;
       background-color: black;
     }
+  }
+  .nothing{
+    position:absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
   }
 }
 @keyframes textgo {
