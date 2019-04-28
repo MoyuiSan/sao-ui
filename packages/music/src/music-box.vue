@@ -1,5 +1,5 @@
 <template>
-  <div class="music-box"  draggable="true">
+  <div class="music-box" draggable="true">
     <div class="music-img" @click="Audionoff" @mouseover="showHoverImg" @mouseleave="hideHoverImg">
       <img :src="imgUrl" alt="SaoUI" />
       <div class="posImg" v-if="isPlay">
@@ -186,7 +186,7 @@ export default {
 
     },
     myDialog: function (e) {
-        console.log(e);
+      console.log(e);
     },
   }
 };
@@ -292,7 +292,7 @@ export default {
         font-size: 12px;
         top: 0px;
         left: 0px;
-        transition: left .1s linear;
+        transition: left 0.1s linear;
       }
     }
   }
@@ -347,6 +347,12 @@ export default {
       top: 20px;
       background-color: black;
     }
+  }
+  #myAudio {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
   }
 }
 @keyframes textgo {
