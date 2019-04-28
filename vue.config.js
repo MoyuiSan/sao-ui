@@ -35,24 +35,19 @@ module.exports = {
     chainWebpack: config => {
         config.module
             .rule('images')
-            .use('image-webpack-loader')
-            .loader('image-webpack-loader')
-            .options({
-                bypassOnDebug: true
-            })
-            .end()
+            .use('url-loader')
+            .loader('url-loader')
+            .tap(options => Object.assign(options, {
+                limit: 1024000
+            }))
+            // .use('image-webpack-loader')
+            // .loader('image-webpack-loader')
+            // .options({
+            //     bypassOnDebug: true
+            // })
+            // .end()
     },
-    lintOnSave: false,
-    // chainWebpack: config => {
-    //     config.module
-    //         .rule('images')
-    //         .use('url-loader')
-    //         .loader('url-loader')
-    //         .tap(options => Object.assign(options, {
-    //             limit: 10240
-    //         }))
-    // }
-
+    lintOnSave: false
     // configureWebpack: config => {
     //     if (progress.env.NODE_ENV === 'production') {
     //         return {
