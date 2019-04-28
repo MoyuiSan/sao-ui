@@ -38,7 +38,7 @@
 <script>
 // 初代播放器版本1.0
 import $ from 'jquery'
-import imgURL from "../../../SAOIcon/img/img1.jpg"
+import imgURL from "../../../public/SAOIcon/img/img1.jpg"
 import moreCTL from "../../../SAOIcon/icon/equipment_normal.png"
 import playURL from "../../../SAOIcon/img/img2.jpg"
 import pauseURL from "../../../SAOIcon/img/img3.jpg"
@@ -230,6 +230,7 @@ export default {
     width: 220px;
     height: 60px;
     .music-mes-title {
+      position: relative;
       width: 215px;
       height: 25px;
       margin-top: 5px;
@@ -252,7 +253,7 @@ export default {
     }
     .contral {
       position: relative;
-      width: 220px;
+      width: 215px;
       height: 25px;
       display: flex;
       .ctl-1 {
