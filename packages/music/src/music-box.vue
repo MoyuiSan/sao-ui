@@ -202,7 +202,7 @@ export default {
   z-index: 900;
   top: 0px;
   left: 5px;
-  background:url('../../../public/SAOIcon/img/img1.jpg');
+  background:url('../../../public/SAOIcon/icon/skills_normal.png') no-repeat;
   .music-img {
     display: flex;
     position: relative;
@@ -232,7 +232,6 @@ export default {
     display: flex;
     flex-direction: column;
     .music-mes-title {
-      position: relative;
       width: 215px;
       height: 25px;
       margin-top: 5px;
@@ -254,7 +253,6 @@ export default {
       }
     }
     .contral {
-      position: relative;
       width: 215px;
       height: 25px;
       display: flex;
