@@ -42,7 +42,9 @@
         <MenuBtn slot="btn" id='5' system='5'></MenuBtn>
       </SaoMenu>
     </div> -->
-    <MusicBox></MusicBox>
+    <!-- <MusicBox :musicList="musicList"></MusicBox> -->
+    <!-- <div>1</div> -->
+    <SaoCard></SaoCard>
     <!-- <ShareWall :imglist="imgList"></ShareWall> -->
     <router-view></router-view>
     <!-- <router-link to='/a'>a</router-link>
@@ -68,7 +70,7 @@ export default {
       icon: iconItem,
       ishow: true,
       isShowMenu: false,
-      musicList: [{ url: '//96.f.1ting.com/5cbedeaf/2ac3ae4cb2f47eabdb8744c0d52f5c8e/zzzzzmp3/2013eMay/06D/06sao/17.mp3', name: 'Yui', actor: '未知' },
+      musicList: [{ url: 'https://96.f.1ting.com/5cc5555f/947fc092c7b4ba91e5b1820a4ad9a827/zzzzzmp3/2013aJan/23D/23ostsao/25.mp3', name: 'Yui', actor: '未知' },
       { url: '//96.f.1ting.com/5cbedeaf/2ac3ae4cb2f47eabdb8744c0d52f5c8e/zzzzzmp3/2013eMay/06D/06sao/17.mp3', name: 'Yui', actor: '未知' },
       { url: '//96.f.1ting.com/5cbedeaf/2ac3ae4cb2f47eabdb8744c0d52f5c8e/zzzzzmp3/2013eMay/06D/06sao/17.mp3', name: 'Yui', actor: '未知' }],
       imgList: [img1,

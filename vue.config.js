@@ -31,16 +31,15 @@ module.exports = {
             }
         }
     },
-    // 图片处理
+    // 图片Url
     chainWebpack: config => {
-        
         config.module
             .rule('images')
             .use('url-loader')
             .loader('url-loader')
             .tap(options => Object.assign(options, {
-                limit: 102400000
-            }))
+                limit: 102400
+        }))
     },
     lintOnSave: false
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="music-box"  draggable="true">
+  <div class="music-box" draggable="true">
     <div class="music-img" @click="Audionoff" @mouseover="showHoverImg" @mouseleave="hideHoverImg">
       <img :src="imgUrl" alt="SaoUI" />
       <div class="posImg" v-if="isPlay">
@@ -27,10 +27,10 @@
       <div class="music-ctl-item"><img :src="ctl4" /></div>
       <div class="music-ctl-item"><img :src="ctl5" /></div>
     </div>
-      <audio id="myAudio" controls v-show="false">
-        <!-- <source src="../../../SAOIcon/music/LiSA.mp3" type="audio/mpeg"> -->
-        <source :src="nowMusicUrl" type="audio/mpeg">
-      </audio>
+    <audio id="myAudio" controls v-show="false">
+      <!-- <source src="../../../SAOIcon/music/LiSA.mp3" type="audio/mpeg"> -->
+      <source :src="nowMusicUrl" type="audio/mpeg">
+    </audio>
   </div>
 </template>
 <script>
@@ -58,7 +58,6 @@ export default {
       ctl4: ctl4,
       ctl5: ctl5,
       selTime: false,
-      musicList: [],
       musicLength: "0:00",
       musicNow: "0:00",
       clear: false,
@@ -73,30 +72,23 @@ export default {
       isDialog: false
     }
   },
-  props: ['musicurl'],
+  props: ['musicList'],
   mounted: function () {
     this.myProgress();
     let x = document.getElementById("myAudio")
     let _this = this;
     let wait = setTimeout(function () {
-      // let now = _this.formatTime(x.currentTime);
       let total = _this.formatTime(x.duration);
+      console.log(x)
       _this.musicLength = total;
-      // var timer = setInterval(() => {
-      //   if (this.clear == true) {
-      //     clearInterval(timer)
-      //   }
-      //   let now = _this.formatTime(x.currentTime);
-      //   _this.musicNow = now;
-      // }, 1000);
       clearTimeout(wait)
-    }, 200)
-    if (!!this.musicList[0]) {
-      console.log(this.musicurl[0], 'lalalal');
-      this.nowMusicUrl = this.musicurl[0].url;
+    }, 500)
+    console.log(this.musicList, 'lalalal');
+    if (!!this.musicList) {
+      this.nowMusicUrl = this.musicList[0].url;
     } else {
-      console.log(this.musicurl, 'lalalal');
-      this.nowMusicUrl = "//96.f.1ting.com/5cbed9e1/410e916b4ea384a5ee5c3d8465f81827/zzzzzmp3/2013aJan/23D/23ostsao/25.mp3";
+      console.log(this.musicList, 'lalalal');
+      this.nowMusicUrl = "";
     }
 
   },
@@ -184,7 +176,7 @@ export default {
 
     },
     myDialog: function (e) {
-        console.log(e);
+      console.log(e);
     },
   }
 };
@@ -290,7 +282,8 @@ export default {
         font-size: 12px;
         top: 0px;
         left: 0px;
-        transition: left .1s linear;
+        transition: left 0.1s linear;
+        z-index: -1;
       }
     }
   }
@@ -346,11 +339,11 @@ export default {
       background-color: black;
     }
   }
-  #myAudio{
-    position:absolute;
+  #myAudio {
+    position: absolute;
     z-index: -1;
-    top: 100;
-    left: 0;
+    top: 100px;
+    left: 00px;
   }
 }
 @keyframes textgo {
