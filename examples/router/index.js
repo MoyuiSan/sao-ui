@@ -14,6 +14,10 @@ export default new Router({
             path: '/b',
             name: 'B',
             component: resolve => require(['../components/test'], resolve)
+        },{
+            path: '/share',
+            name: 'Share',
+            component: resolve => require(['../components/ShareWall/sharewall'], resolve)
         }
     ]
 })

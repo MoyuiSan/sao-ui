@@ -1,16 +1,16 @@
 <template>
   <div class="mask" @mousemove="saotxt">
     <div class="img-box" @click="selectImg" @mouseover="test">
-      <img :src="img1" class="imgbox1" id='1' alt=""/>
-      <img :src="img2" class="imgbox2" id='2' alt=""/>
-      <img :src="img3" class="imgbox3" id='3' alt=""/>
-      <img :src="img4" class="imgbox4" id='4' alt=""/>
-      <img :src="img5" class="imgbox5" id='5' alt=""/>
+      <img :src="img1" class="imgbox1" id='1' alt="" />
+      <img :src="img2" class="imgbox2" id='2' alt="" />
+      <img :src="img3" class="imgbox3" id='3' alt="" />
+      <img :src="img4" class="imgbox4" id='4' alt="" />
+      <img :src="img5" class="imgbox5" id='5' alt="" />
     </div>
     <div class="back-img" v-if="resetImg">
       <img :src="backImg" />
     </div>
-    <div class="back-txt">这虽然是游戏，可不是闹着玩的！</div>
+    <!-- <div class="back-txt">这虽然是游戏，可不是闹着玩的！</div> -->
   </div>
 </template>
 <script>
@@ -39,7 +39,7 @@ export default {
   mounted: function () {
     $(".mask").css('height', $(window).height());
     $(".back-img").css('height', $(window).height());
-    console.log(this.imglist[0],'lalaal');
+    console.log(this.imglist[0], 'lalaal');
   },
   updated: function () {
     $(".back-img").css('height', $(window).height());
@@ -53,15 +53,15 @@ export default {
         let _this = this;
         let timer = setTimeout(function () {
           if (id == 1) {
-            _this.backImg =  _this.imglist[0];
+            _this.backImg = _this.imglist[0];
           } else if (id == 2) {
-            _this.backImg =  _this.imglist[1];
+            _this.backImg = _this.imglist[1];
           } else if (id == 3) {
-            _this.backImg =  _this.imglist[2];
+            _this.backImg = _this.imglist[2];
           } else if (id == 4) {
-            _this.backImg =  _this.imglist[3];
+            _this.backImg = _this.imglist[3];
           } else if (id == 5) {
-            _this.backImg =  _this.imglist[4];
+            _this.backImg = _this.imglist[4];
           }
           _this.resetImg = true;
           clearTimeout(timer)
@@ -83,7 +83,7 @@ export default {
       let _this = this;
       let timer = setTimeout(function () {
         if (_this.mouseX == e.clientX) {
-          $(".back-txt").css('left', _this.mouseX+20);
+          $(".back-txt").css('left', _this.mouseX + 20);
           $(".back-txt").css('top', _this.mouseY);
         }
       }, 20);
@@ -122,6 +122,7 @@ export default {
       top: 200px;
       cursor: pointer;
       box-sizing: border-box;
+          box-shadow: 0px 0px 10px white;
       &:hover {
         border: 2px solid white;
         box-shadow: 5px black;

@@ -1,5 +1,8 @@
 <template>
   <div id="app" @dblclick="showMenu">
+    <div class="welcome" v-if="ishow">
+      Welcome to SAO World!
+    </div>
     <!-- <img
       alt="Vue logo"
       src="./assets/logo.png"
@@ -8,26 +11,12 @@
       msg="test"
       @comfirm="test"
     /> -->
-    <!-- <div>
+    <div>
       <SaoMenu :ShowMask='isShowMenu' ref="mask">
         <MenuBtn slot="btn" id='1' system='1'>
-          <MenuItem id="1" to='/a' name='test1'>
+          <MenuItem id="1" to='/a' name='个人信息'>
           </MenuItem>
-          <MenuItem id="2" to='/b' name='test2'>
-          </MenuItem>
-          <MenuItem id="3">
-          </MenuItem>
-          <MenuItem id="4">
-          </MenuItem>
-          <MenuItem id="5">
-          </MenuItem>
-          <MenuItem id="6">
-          </MenuItem>
-          <MenuItem id="7">
-          </MenuItem>
-          <MenuItem id="8">
-          </MenuItem>
-          <MenuItem id="9">
+          <MenuItem id="2" to='/b' name='我的收藏'>
           </MenuItem>
         </MenuBtn>
         <MenuBtn slot="btn" id='2' system='2'>
@@ -38,13 +27,16 @@
           <MenuItem id="1" to='/a' name='test1'>
           </MenuItem>
         </MenuBtn>
-        <MenuBtn slot="btn" id='4' system='4'></MenuBtn>
+        <MenuBtn slot="btn" id='4' system='4'>
+          <MenuItem id="1" to='/share' name='安利墙'>
+          </MenuItem>
+        </MenuBtn>
         <MenuBtn slot="btn" id='5' system='5'></MenuBtn>
       </SaoMenu>
-    </div> -->
+    </div>
     <!-- <MusicBox :musicList="musicList"></MusicBox> -->
     <!-- <div>1</div> -->
-    <SaoCard></SaoCard>
+    <!-- <SaoCard></SaoCard> -->
     <!-- <ShareWall :imglist="imgList"></ShareWall> -->
     <router-view></router-view>
     <!-- <router-link to='/a'>a</router-link>
@@ -57,10 +49,6 @@
 // import HelloWorld from './components/HelloWorld.vue'
 import $ from "jquery";
 import iconItem from "./assets/SAOIcon/symbol/info_normal.png";
-import img1 from "../public/SAOIcon/img/share1.png"
-import img2 from "../public/SAOIcon/img/share2.png"
-import img3 from "../public/SAOIcon/img/share3.jpg"
-import img4 from "../public/SAOIcon/img/share4.png"
 // import img5 from "../../../public/SAOIcon/img/share5.jpg"
 export default {
   name: "app",
@@ -73,17 +61,12 @@ export default {
       musicList: [{ url: 'https://96.f.1ting.com/5cc5555f/947fc092c7b4ba91e5b1820a4ad9a827/zzzzzmp3/2013aJan/23D/23ostsao/25.mp3', name: 'Yui', actor: '未知' },
       { url: '//96.f.1ting.com/5cbedeaf/2ac3ae4cb2f47eabdb8744c0d52f5c8e/zzzzzmp3/2013eMay/06D/06sao/17.mp3', name: 'Yui', actor: '未知' },
       { url: '//96.f.1ting.com/5cbedeaf/2ac3ae4cb2f47eabdb8744c0d52f5c8e/zzzzzmp3/2013eMay/06D/06sao/17.mp3', name: 'Yui', actor: '未知' }],
-      imgList: [img1,
-        img2,
-        img3,
-        img4,
-        "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557034861&di=0f9449352dd306a9680e1dcc25dbb765&imgtype=jpg&er=1&src=http%3A%2F%2Fimgs.aixifan.com%2Flive%2F1483766607117%2F1483766607117.jpg"]
     };
   },
   mounted: function () {
     console.log(this.$refs.mask);
     $("#app").css("height", $(window).height());
-    console.log(this.$store.state.items)
+    // console.log(this.$store.state.items)
   },
   components: {
     // HelloWorld
@@ -96,6 +79,7 @@ export default {
       } else {
         this.$refs.mask.showMask();
       }
+      this.ishow = false;
     }
   }
 };
@@ -110,6 +94,8 @@ export default {
   color: #2c3e50;
   /* margin-top: 60px; */
   height: 1040px;
+  background: url("./assets/img/bg1.jpg");
+  background-size: cover;
 }
 @font-face {
   font-family: "saoUI";
@@ -118,5 +104,15 @@ export default {
 * {
   font-family: saoUI;
   margin: 0px;
+  user-select: none;
+}
+.welcome {
+  width: 100%;
+  height: auto;
+  color: white;
+  font-size: 30px;
+  padding-top: 100px;
+  position: fixed;
+  z-index: 1;
 }
 </style>

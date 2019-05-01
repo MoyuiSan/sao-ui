@@ -1,5 +1,5 @@
 <template>
-  <div class="menu-item" @click="test">
+  <div class="menu-item" @click="test" :style="{'animation-delay':+id/5+'s'}">
     <div class="item_bottom"><img :src="iconI" :id='id'></div>
     <div class="item_icon"><img :src="icon"></div>
     <div class="item_main" v-if="isItemMain">
@@ -10,11 +10,11 @@
 <script>
 import $ from "jquery";
 import iconImg from "../../../public/SAOIcon/background/btn_normal.png";
-import infoItem from "../../../public/SAOIcon/symbol/info_normal.png";
-import msgItem from "../../../public/SAOIcon/symbol/Msg_normal.png";
-import partyItem from "../../../public/SAOIcon/symbol/Party_normal.png";
-import pluginItem from "../../../public/SAOIcon/symbol/plugin_normal.png";
-import settingItem from "../../../public/SAOIcon/symbol/setting_normal.png";
+import infoItem from "../../../public/SAOIcon/symbol/info_hover.png";
+import msgItem from "../../../public/SAOIcon/symbol/Msg_hover.png";
+import partyItem from "../../../public/SAOIcon/symbol/Party_hover.png";
+import pluginItem from "../../../public/SAOIcon/symbol/plugin_hover.png";
+import settingItem from "../../../public/SAOIcon/symbol/setting_hover.png";
 export default {
   name: "MenuBtn",
   props: ["id", "system"],
@@ -40,6 +40,7 @@ export default {
     }
   },
   mounted: function () {
+    console.log(this.id)
   },
   methods: {
     test: function () {//打开选项卡
@@ -68,6 +69,9 @@ export default {
   font-size: 12px;
   position: relative;
   cursor: pointer;
+  animation: upup 0.4s ease-in;
+  opacity: 0;
+  animation-fill-mode: forwards;
 }
 .item_bottom {
   position: absolute;
@@ -102,6 +106,16 @@ export default {
   overflow: scroll;
   &::-webkit-scrollbar {
     display: none;
+  }
+}
+@keyframes upup {
+  0% {
+    top: 50px;
+    opacity: 0;
+  }
+  100% {
+    top: 0px;
+    opacity: 1;
   }
 }
 </style>

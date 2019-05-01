@@ -1,7 +1,7 @@
 <template>
   <div class="mask" v-show="isShow">
     <div class="menu-box" v-if="resetBtn" @click="reload">
-      <div>
+      <div @click="selected">
         <slot name='btn'></slot>
       </div>
       <div class="menu-main" v-if="isClick"><img :src="indicator">
@@ -39,7 +39,9 @@ export default {
   created: function () { },
   mounted: function () {
     $(".mask").height($(window).height());
-    console.log(this.isShowThis, "sdasdas");
+    // console.log(this.isShowThis, "sdasdas");
+  },
+  destroyed: function () {
   },
   methods: {
     resetItem: function () {
@@ -95,6 +97,13 @@ export default {
     },
     showMask: function () {
       this.isShow = true;
+    },
+    selected: function (e) {
+      console.log(e.target)
+      if (!!e.target.id == false) {
+        this.isShow=false;//点击退出菜单
+      }
+
     }
   }
 };
@@ -102,7 +111,7 @@ export default {
 <style lang="less" scoped>
 .mask {
   width: 100%;
-  background-color: rgba(105, 105, 105, 0.473);
+  // background-color: rgba(105, 105, 105, 0.473);
   position: fixed;
   top: 0px;
   left: 0px;

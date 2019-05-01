@@ -10,11 +10,13 @@ export default {
 .sao-card {
   width: 200px;
   height: 200px;
-  background-color: black;
+  background:url("./../../../public/SAOIcon/img/img1.jpg");
+  background-size: cover;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  // top: 50%;
+  // left: 50%;
+  // transform: translate(-50%, -50%);
+  margin: 15px;
   &::before,
   &::after {
     content: "";
@@ -31,8 +33,14 @@ export default {
     //  clip: rect(0px 230px 230px 228px);
     animation: borderClip 6s ease infinite;
   }
-  &::after{
-      animation-delay: 3s;
+  &::after {
+    animation-delay: 3s;
+  }
+  &:hover {
+    &::before,
+    &::after {
+      animation-play-state: paused;
+    }
   }
 }
 @keyframes borderClip {
