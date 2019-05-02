@@ -1,7 +1,8 @@
 <template>
   <div id="app" @dblclick="showMenu">
     <div class="welcome" v-if="ishow">
-      Welcome to SAO World!
+      <input class="welcome-txt" type="text" :value="txt" />
+      <div class="notouch"></div>
     </div>
     <!-- <img
       alt="Vue logo"
@@ -61,12 +62,28 @@ export default {
       musicList: [{ url: 'https://96.f.1ting.com/5cc5555f/947fc092c7b4ba91e5b1820a4ad9a827/zzzzzmp3/2013aJan/23D/23ostsao/25.mp3', name: 'Yui', actor: '未知' },
       { url: '//96.f.1ting.com/5cbedeaf/2ac3ae4cb2f47eabdb8744c0d52f5c8e/zzzzzmp3/2013eMay/06D/06sao/17.mp3', name: 'Yui', actor: '未知' },
       { url: '//96.f.1ting.com/5cbedeaf/2ac3ae4cb2f47eabdb8744c0d52f5c8e/zzzzzmp3/2013eMay/06D/06sao/17.mp3', name: 'Yui', actor: '未知' }],
+      txt: ''
     };
   },
   mounted: function () {
     console.log(this.$refs.mask);
     $("#app").css("height", $(window).height());
     // console.log(this.$store.state.items)
+    // $('welcome-txt').preventDefault()
+    let txt = "Welcome to SAO World!";
+    let txtLength = txt.length;
+    let txtArrary = txt.split("");
+    let showTxt = "";
+    let _this = this;
+    console.log(txtLength);
+    for (let i = 0; i < txtLength; i++) {
+      let timer = setTimeout(function () {
+        showTxt += txtArrary[i];
+        _this.txt = showTxt;
+        clearTimeout(timer)
+      }, 100 * i)
+
+    }
   },
   components: {
     // HelloWorld
@@ -114,5 +131,22 @@ export default {
   padding-top: 100px;
   position: fixed;
   z-index: 1;
+}
+.welcome-txt {
+  font-size: 30px;
+  color: white;
+  background-color: rgba(255, 255, 255, 0);
+  border: 0px;
+  outline: none;
+  padding-left: 5px;
+}
+.notouch {
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background-color: white; */
 }
 </style>

@@ -40,7 +40,7 @@ export default {
     }
   },
   mounted: function () {
-    console.log(this.id)
+    // console.log(this.id)
   },
   methods: {
     test: function () {//打开选项卡
