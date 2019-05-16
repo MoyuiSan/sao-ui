@@ -1,4 +1,7 @@
-const CompressionPlugin = require("compression-webpack-plugin")
+// 导入compression-webpack-plugin
+const CompressionWebpackPlugin = require('compression-webpack-plugin')
+// 定义压缩文件类型
+const productionGzipExtensions = ['js', 'css']
 module.exports = {
     //...
     publicPath: './', //打包的默认路径
@@ -31,16 +34,37 @@ module.exports = {
             }
         }
     },
-    // 图片Url
+    // lib模式图片限制
+    // chainWebpack: config => {
+    //     config.module
+    //         .rule('images')
+    //         .use('url-loader')
+    //         .loader('url-loader')
+    //         .tap(options => Object.assign(options, {
+    //             limit: 102400
+    //     }))
+    // },
     chainWebpack: config => {
         config.module
             .rule('images')
-            .use('url-loader')
-            .loader('url-loader')
-            .tap(options => Object.assign(options, {
-                limit: 102400
-        }))
-    },
-    lintOnSave: false
+            .use('image-webpack-loader')
+            .loader('image-webpack-loader')
+            .options({
+              bypassOnDebug: true
+            })
+            .end()
+      },
+    lintOnSave: false,
+    configureWebpack: {
+        plugins: [
+          new CompressionWebpackPlugin({
+            filename: '[path].gz[query]',
+            algorithm: 'gzip',
+            test: new RegExp('\\.(' + productionGzipExtensions.join('|') + ')$'),
+            threshold: 10240,
+            minRatio: 0.8
+          })
+        ]
+      }
 
 }

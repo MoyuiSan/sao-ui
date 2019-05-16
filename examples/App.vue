@@ -4,6 +4,12 @@
       <input class="welcome-txt" type="text" :value="txt" />
       <div class="notouch"></div>
     </div>
+    <div class="userinfo" v-if="!ishow">
+      <UserBox></UserBox>
+    </div>
+    <div class="userlist">
+      <div>
+    </div>
     <!-- <img
       alt="Vue logo"
       src="./assets/logo.png"
@@ -12,6 +18,7 @@
       msg="test"
       @comfirm="test"
     /> -->
+    <!-- 选择框 -->
     <div>
       <SaoMenu :ShowMask='isShowMenu' ref="mask">
         <MenuBtn slot="btn" id='1' system='1'>
@@ -51,6 +58,7 @@
 import $ from "jquery";
 import iconItem from "./assets/SAOIcon/symbol/info_normal.png";
 // import img5 from "../../../public/SAOIcon/img/share5.jpg"
+import userBox from "./components/userBox/userbox"
 export default {
   name: "app",
   data() {
@@ -68,25 +76,11 @@ export default {
   mounted: function () {
     console.log(this.$refs.mask);
     $("#app").css("height", $(window).height());
-    // console.log(this.$store.state.items)
-    // $('welcome-txt').preventDefault()
-    let txt = "Welcome to SAO World!";
-    let txtLength = txt.length;
-    let txtArrary = txt.split("");
-    let showTxt = "";
-    let _this = this;
-    console.log(txtLength);
-    for (let i = 0; i < txtLength; i++) {
-      let timer = setTimeout(function () {
-        showTxt += txtArrary[i];
-        _this.txt = showTxt;
-        clearTimeout(timer)
-      }, 100 * i)
-
-    }
+    this.welcome();
   },
   components: {
     // HelloWorld
+    UserBox: userBox
   },
   methods: {
     showMenu: function () {
@@ -97,6 +91,21 @@ export default {
         this.$refs.mask.showMask();
       }
       this.ishow = false;
+    },
+    welcome: function () {
+      let txt = "Welcome to SAO World!";
+      let txtLength = txt.length;
+      let txtArrary = txt.split("");
+      let showTxt = "";
+      let _this = this;
+      console.log(txtLength);
+      for (let i = 0; i < txtLength; i++) {
+        let timer = setTimeout(function () {
+          showTxt += txtArrary[i];
+          _this.txt = showTxt;
+          clearTimeout(timer)
+        }, 100 * i)
+      }
     }
   }
 };
@@ -142,11 +151,25 @@ export default {
 }
 .notouch {
   position: absolute;
-  z-index: 100;
+  z-index: 1000;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   /* background-color: white; */
 }
-</style>
+.userinfo {
+  width: 100%;
+  height: 100px;
+  position: fixed;
+  /* background-color: white; */
+  z-index: 100;
+}
+.userlist{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  z-index: 99;
+}
+</stylel>

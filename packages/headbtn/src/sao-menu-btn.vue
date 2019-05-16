@@ -104,6 +104,7 @@ export default {
   left: 100px;
   height: 200px;
   overflow: scroll;
+  // background: linear-gradient(#f00, #ff0, #0f0);
   &::-webkit-scrollbar {
     display: none;
   }
