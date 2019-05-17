@@ -44,6 +44,7 @@ module.exports = {
     //             limit: 102400
     //     }))
     // },
+    //图片压缩
     chainWebpack: config => {
         config.module
             .rule('images')

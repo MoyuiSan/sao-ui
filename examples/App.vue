@@ -1,45 +1,37 @@
 <template>
   <div id="app" @dblclick="showMenu">
     <div class="welcome" v-if="ishow">
-      <input class="welcome-txt" type="text" :value="txt" />
+      <input class="welcome-txt" type="text" :value="txt">
       <div class="notouch"></div>
     </div>
     <div class="userinfo" v-if="!ishow">
       <UserBox></UserBox>
     </div>
-    <div class="userlist">
-      <div>
-    </div>
     <!-- <img
       alt="Vue logo"
       src="./assets/logo.png"
-    > -->
+    >-->
     <!-- <SaoAlert
       msg="test"
       @comfirm="test"
-    /> -->
+    />-->
     <!-- 选择框 -->
     <div>
-      <SaoMenu :ShowMask='isShowMenu' ref="mask">
-        <MenuBtn slot="btn" id='1' system='1'>
-          <MenuItem id="1" to='/a' name='个人信息'>
-          </MenuItem>
-          <MenuItem id="2" to='/b' name='我的收藏'>
-          </MenuItem>
+      <SaoMenu :ShowMask="isShowMenu" ref="mask">
+        <MenuBtn slot="btn" id="1" system="1">
+          <MenuItem id="1" to="/a" name="个人信息"></MenuItem>
+          <MenuItem id="2" to="/fold" name="我的收藏"></MenuItem>
         </MenuBtn>
-        <MenuBtn slot="btn" id='2' system='2'>
-          <MenuItem>
-          </MenuItem>
+        <MenuBtn slot="btn" id="2" system="2">
+          <MenuItem></MenuItem>
         </MenuBtn>
-        <MenuBtn slot="btn" id='3' system='3'>
-          <MenuItem id="1" to='/a' name='test1'>
-          </MenuItem>
+        <MenuBtn slot="btn" id="3" system="3">
+          <MenuItem id="1" to="/a" name="test1"></MenuItem>
         </MenuBtn>
-        <MenuBtn slot="btn" id='4' system='4'>
-          <MenuItem id="1" to='/share' name='安利墙'>
-          </MenuItem>
+        <MenuBtn slot="btn" id="4" system="4">
+          <MenuItem id="1" to="/share" name="安利墙"></MenuItem>
         </MenuBtn>
-        <MenuBtn slot="btn" id='5' system='5'></MenuBtn>
+        <MenuBtn slot="btn" id="5" system="5"></MenuBtn>
       </SaoMenu>
     </div>
     <!-- <MusicBox :musicList="musicList"></MusicBox> -->
@@ -47,9 +39,6 @@
     <!-- <SaoCard></SaoCard> -->
     <!-- <ShareWall :imglist="imgList"></ShareWall> -->
     <router-view></router-view>
-    <!-- <router-link to='/a'>a</router-link>
-        <router-link to='/b'>b</router-link>
-    <router-view></router-view> -->
   </div>
 </template>
 
@@ -58,7 +47,7 @@
 import $ from "jquery";
 import iconItem from "./assets/SAOIcon/symbol/info_normal.png";
 // import img5 from "../../../public/SAOIcon/img/share5.jpg"
-import userBox from "./components/userBox/userbox"
+import userBox from "./components/userBox/userbox";
 export default {
   name: "app",
   data() {
@@ -67,13 +56,30 @@ export default {
       icon: iconItem,
       ishow: true,
       isShowMenu: false,
-      musicList: [{ url: 'https://96.f.1ting.com/5cc5555f/947fc092c7b4ba91e5b1820a4ad9a827/zzzzzmp3/2013aJan/23D/23ostsao/25.mp3', name: 'Yui', actor: '未知' },
-      { url: '//96.f.1ting.com/5cbedeaf/2ac3ae4cb2f47eabdb8744c0d52f5c8e/zzzzzmp3/2013eMay/06D/06sao/17.mp3', name: 'Yui', actor: '未知' },
-      { url: '//96.f.1ting.com/5cbedeaf/2ac3ae4cb2f47eabdb8744c0d52f5c8e/zzzzzmp3/2013eMay/06D/06sao/17.mp3', name: 'Yui', actor: '未知' }],
-      txt: ''
+      musicList: [
+        {
+          url:
+            "https://96.f.1ting.com/5cc5555f/947fc092c7b4ba91e5b1820a4ad9a827/zzzzzmp3/2013aJan/23D/23ostsao/25.mp3",
+          name: "Yui",
+          actor: "未知"
+        },
+        {
+          url:
+            "//96.f.1ting.com/5cbedeaf/2ac3ae4cb2f47eabdb8744c0d52f5c8e/zzzzzmp3/2013eMay/06D/06sao/17.mp3",
+          name: "Yui",
+          actor: "未知"
+        },
+        {
+          url:
+            "//96.f.1ting.com/5cbedeaf/2ac3ae4cb2f47eabdb8744c0d52f5c8e/zzzzzmp3/2013eMay/06D/06sao/17.mp3",
+          name: "Yui",
+          actor: "未知"
+        }
+      ],
+      txt: ""
     };
   },
-  mounted: function () {
+  mounted: function() {
     console.log(this.$refs.mask);
     $("#app").css("height", $(window).height());
     this.welcome();
@@ -83,7 +89,7 @@ export default {
     UserBox: userBox
   },
   methods: {
-    showMenu: function () {
+    showMenu: function() {
       if (this.$refs.mask.isShow == true) {
         //内部调用开关方法
         this.$refs.mask.noShow();
@@ -92,7 +98,7 @@ export default {
       }
       this.ishow = false;
     },
-    welcome: function () {
+    welcome: function() {
       let txt = "Welcome to SAO World!";
       let txtLength = txt.length;
       let txtArrary = txt.split("");
@@ -100,13 +106,13 @@ export default {
       let _this = this;
       console.log(txtLength);
       for (let i = 0; i < txtLength; i++) {
-        let timer = setTimeout(function () {
+        let timer = setTimeout(function() {
           showTxt += txtArrary[i];
           _this.txt = showTxt;
-          clearTimeout(timer)
-        }, 100 * i)
+          clearTimeout(timer);
+        }, 100 * i);
       }
-    }
+    },
   }
 };
 </script>
@@ -120,7 +126,8 @@ export default {
   color: #2c3e50;
   /* margin-top: 60px; */
   height: 1040px;
-  background: url("./assets/img/bg1.jpg");
+  /* background-color: aliceblue; */
+  background-image: url("../examples/assets/img/bg1.jpg");
   background-size: cover;
 }
 @font-face {
@@ -164,12 +171,5 @@ export default {
   position: fixed;
   /* background-color: white; */
   z-index: 100;
-}
-.userlist{
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: white;
-  z-index: 99;
 }
 </stylel>

@@ -11,13 +11,13 @@ export default new Router({
             component: resolve => require(['../components/HelloWorld'], resolve)
         },
         {
-            path: '/b',
-            name: 'B',
-            component: resolve => require(['../components/test'], resolve)
+            path: '/fold',
+            name: 'Fold',
+            component: resolve => require(['../components/foldBox/foldbox'], resolve)
         },{
             path: '/share',
             name: 'Share',
-            component: resolve => require(['../components/ShareWall/sharewall'], resolve)
+            component: resolve => require(['../components/shareWall/sharewall'], resolve)
         }
     ]
 })
