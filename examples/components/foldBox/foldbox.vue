@@ -16,14 +16,25 @@ import $ from "jquery";
 export default {
   name: "FoldBox",
   data() {
-    return {};
+    return {
+      lock: true
+    };
   },
   methods: {
+      //优化点击效果
     listHover: function(e) {
-      let nowId = (parseInt(e.target.id) + 1).toString();
-      console.log(typeof e.target.id);
-      $(".list-show-box:not(:first-child)").css("margin-left", "-33%");
-      $("#" + nowId + ".list-show-box").css("margin-left", "0");
+      let _this = this;
+      if (_this.lock == true) {
+        _this.lock = false;
+        let nowId = (parseInt(e.target.id) + 1).toString();
+        console.log(typeof e.target.id);
+        $(".list-show-box:not(:first-child)").css("margin-left", "-33%");
+        $("#" + nowId + ".list-show-box").css("margin-left", "0");
+        let timer = setTimeout(function() {
+          _this.lock = true;
+          clearTimeout(timer);
+        },400);
+      }
     }
   }
 };
