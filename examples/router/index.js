@@ -4,6 +4,7 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 export default new Router({
+    // mode:'history',
     routes: [
         {
             path: '/a',
@@ -23,6 +24,12 @@ export default new Router({
             path: '/canvas',
             name: 'Canvas',
             component: resolve => require(['../components/canvasBox/canvasbox'], resolve)
+        },
+        ,
+        {
+            path: '/user',
+            name: 'User',
+            component: resolve => require(['../components/userInfo/userinfo'], resolve)
         }
     ]
 })

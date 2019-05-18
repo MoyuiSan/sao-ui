@@ -4,7 +4,7 @@
       <input class="welcome-txt" type="text" :value="txt">
       <div class="notouch"></div>
     </div>
-    <div class="userinfo" v-if="!ishow">
+    <div class="userinfo" v-if="false">
       <UserBox></UserBox>
     </div>
     <!-- <img
@@ -54,7 +54,7 @@ export default {
     return {
       menuSonlist: [{ id: "1", name: "123", link: "/a", imgURl: "112313123" }],
       icon: iconItem,
-      ishow: true,
+      ishow: this.$store.getters.isShow,
       isShowMenu: false,
       musicList: [
         {
@@ -79,10 +79,29 @@ export default {
       txt: ""
     };
   },
+  created() {},
   mounted: function() {
-    console.log(this.$refs.mask);
-    $("#app").css("height", $(window).height());
+    // console.log(this.$refs.mask);
+    // console.log(this.$store.getters.isShow);
     this.welcome();
+    // if(this.$router.history.current.path != '/'){
+    //   this.ishow=false;
+    // }
+    $("#app").css("height", $(window).height());
+    //Dom更新之后进行相关数据绑定！
+    // this.$nextTick(() => {
+    //   // DOM 现在更新了
+    //   // `this` 绑定到当前实例
+    //   this.ishow = this.$store.getters.isShow;
+    //   console.log(this.ishow);
+    // });
+    //使用定时器进行数据延迟修改！
+    // let _this = this;
+    // let timer = setTimeout(function() {
+    //   _this.ishow = _this.$store.getters.isShow;
+    //   console.log(_this.ishow);
+    //   clearTimeout(timer);
+    // }, 100);
   },
   components: {
     // HelloWorld
@@ -96,7 +115,9 @@ export default {
       } else {
         this.$refs.mask.showMask();
       }
-      this.ishow = false;
+      this.$store.dispatch("noShow");
+      console.log(this.ishow);
+      this.ishow = this.$store.getters.isShow;
     },
     welcome: function() {
       let txt = "Welcome to SAO World!";
@@ -112,7 +133,12 @@ export default {
           clearTimeout(timer);
         }, 100 * i);
       }
-    },
+      let timer = setTimeout(function() {
+        _this.$store.dispatch("noShow");
+        _this.ishow = _this.$store.getters.isShow;
+        clearTimeout(timer);
+      }, 5000);
+    }
   }
 };
 </script>

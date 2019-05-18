@@ -2,6 +2,7 @@
 node_modules
 /dist
 /myapp
+/server/node_modules
 
 # local env files
 .env.local
