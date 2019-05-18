@@ -18,6 +18,11 @@ export default new Router({
             path: '/share',
             name: 'Share',
             component: resolve => require(['../components/shareWall/sharewall'], resolve)
+        },
+        {
+            path: '/canvas',
+            name: 'Canvas',
+            component: resolve => require(['../components/canvasBox/canvasbox'], resolve)
         }
     ]
 })

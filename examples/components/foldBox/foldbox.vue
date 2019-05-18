@@ -41,7 +41,7 @@ export default {
 </script>
 <style lang="less" scoped>
 .userlist {
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
   width: 100%;
