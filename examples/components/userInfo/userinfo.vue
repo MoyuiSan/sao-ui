@@ -60,7 +60,7 @@
       <div class="userinfo-article-box">
         <div
           class="userinfo-article-box-item"
-          v-for="(value,index) in [1,2,3,4,5,6,7,8,9]"
+          v-for="(value,index) in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21]"
           :key="index"
         >{{value}}</div>
       </div>
@@ -263,20 +263,33 @@ export default {
       flex-wrap: wrap;
       // justify-content: space-between;
       align-content: flex-start;
+      overflow: auto;
+      &::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+        background-color: rgb(221, 221, 221);
+      }
+      &::-webkit-scrollbar-thumb {
+        background-color: white;
+      }
+      &::-beha
       .userinfo-article-box-item {
         position: relative;
         width: 22.5%;
         height: 100px;
         // margin-left: 2%;
-        background-color: red;
+        background-color: rgb(221, 221, 221);
         // margin: 20px;
         margin-left: 2%;
         margin-top: 15px;
         &:hover {
           transform: scale(1.05);
           box-shadow: 0px 0px 5px white;
-          transition: transform .4s ease-out,box-shadow .4s ease-out;
+          transition: transform 0.4s ease-out, box-shadow 0.4s ease-out;
           cursor: pointer;
+        }
+        &:last-child {
+          margin-bottom: 15px;
         }
       }
     }
