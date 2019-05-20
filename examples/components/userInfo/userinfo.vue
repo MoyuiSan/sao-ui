@@ -57,6 +57,13 @@
     </div>
     <div class="userinfo-article">
       <div class="userinfo-article-title">我发布的</div>
+      <div class="userinfo-article-box">
+        <div
+          class="userinfo-article-box-item"
+          v-for="(value,index) in [1,2,3,4,5,6,7,8,9]"
+          :key="index"
+        >{{value}}</div>
+      </div>
     </div>
   </div>
 </template>
@@ -66,7 +73,29 @@ export default {
   name: "UserInfo",
   data() {
     return {
-      userimg: userImg
+      userimg: userImg,
+      testList: [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ]
     };
   },
   mounted() {},
@@ -223,6 +252,33 @@ export default {
       color: white;
       text-align: left;
       padding: 10px;
+      box-sizing: border-box;
+      border-bottom: 1px solid rgb(221, 221, 221);
+      height: 8.5%;
+    }
+    .userinfo-article-box {
+      width: 100%;
+      height: 91.5%;
+      display: flex;
+      flex-wrap: wrap;
+      // justify-content: space-between;
+      align-content: flex-start;
+      .userinfo-article-box-item {
+        position: relative;
+        width: 22.5%;
+        height: 100px;
+        // margin-left: 2%;
+        background-color: red;
+        // margin: 20px;
+        margin-left: 2%;
+        margin-top: 15px;
+        &:hover {
+          transform: scale(1.05);
+          box-shadow: 0px 0px 5px white;
+          transition: transform .4s ease-out,box-shadow .4s ease-out;
+          cursor: pointer;
+        }
+      }
     }
   }
   &::before {
