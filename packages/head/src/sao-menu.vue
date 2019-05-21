@@ -99,7 +99,7 @@ export default {
       this.isShow = true;
     },
     selected: function (e) {
-      console.log(e.target)
+      // console.log(e.target)
       if (!!e.target.id == false) {
         this.isShow=false;//点击退出菜单
       }
