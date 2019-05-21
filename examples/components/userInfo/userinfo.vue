@@ -57,17 +57,19 @@
     </div>
     <div class="userinfo-article">
       <div class="userinfo-article-title">我发布的</div>
-      <div class="userinfo-article-box">
+      <div class="userinfo-article-box" @click="moreThings">
         <div
           class="userinfo-article-box-item"
-          v-for="(value,index) in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21]"
+          v-for="(value,index) in testList"
           :key="index"
         >{{value}}</div>
       </div>
+      <p v-if="isLoading">加载中...</p>
     </div>
   </div>
 </template>
 <script>
+import $ from "jquery";
 import userImg from "../../assets/logo.png";
 export default {
   name: "UserInfo",
@@ -94,15 +96,37 @@ export default {
         17,
         18,
         19,
-        20
-      ]
+        20,
+        21
+      ],
+      isLoading: false
     };
   },
-  mounted() {},
+  mounted() {
+    let nScrollHight = $(".userinfo-article-box").height(); //滚动距离总长(注意不是滚动条的长度)
+    let nScrollTop = 0; //滚动到的当前位置
+    let nDivHight = document.getElementsByClassName("userinfo-article-box")[0]
+      .scrollHeight;
+    let _this = this;
+    // console.log($(".userinfo-article-box").scrollTop());
+    $(".userinfo-article-box").scroll(function() {
+      nScrollTop = $(".userinfo-article-box").scrollTop();
+      console.log(nScrollTop);
+      console.log(nScrollHight);
+      console.log(nDivHight);
+      if (nScrollHight + nScrollTop == nDivHight) {
+        _this.isLoading = true;
+        console.log("到底了！");
+      } else {
+        _this.isLoading = false;
+      }
+    });
+  },
   methods: {
     test: function(e) {
       console.log(e.target, "dsadaasd");
-    }
+    },
+    moreThings: function(e) {}
   }
 };
 </script>
@@ -244,6 +268,7 @@ export default {
     }
   }
   .userinfo-article {
+    position: relative;
     width: 70%;
     height: 510px;
     box-sizing: border-box;
@@ -254,11 +279,12 @@ export default {
       padding: 10px;
       box-sizing: border-box;
       border-bottom: 1px solid rgb(221, 221, 221);
-      height: 8.5%;
+      height: 43px;
     }
     .userinfo-article-box {
+      position: relative;
       width: 100%;
-      height: 91.5%;
+      height: 467px;
       display: flex;
       flex-wrap: wrap;
       // justify-content: space-between;
@@ -272,19 +298,19 @@ export default {
       &::-webkit-scrollbar-thumb {
         background-color: white;
       }
-      &::-beha
       .userinfo-article-box-item {
         position: relative;
         width: 22.5%;
         height: 100px;
         // margin-left: 2%;
-        background-color: rgb(221, 221, 221);
+        background-color: white;
         // margin: 20px;
         margin-left: 2%;
         margin-top: 15px;
+        border-radius: 5px;
         &:hover {
           transform: scale(1.05);
-          box-shadow: 0px 0px 5px white;
+          // box-shadow: 0px 0px 2px white;
           transition: transform 0.4s ease-out, box-shadow 0.4s ease-out;
           cursor: pointer;
         }
@@ -292,6 +318,13 @@ export default {
           margin-bottom: 15px;
         }
       }
+    }
+    p {
+      position: absolute;
+      width: 100%;
+      color: white;
+      bottom: 0;
+      text-align: center;
     }
   }
   &::before {
