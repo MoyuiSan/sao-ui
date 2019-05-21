@@ -106,7 +106,7 @@ export default {
     let nScrollHight = $(".userinfo-article-box").height(); //滚动距离总长(注意不是滚动条的长度)
     let nScrollTop = 0; //滚动到的当前位置
     let nDivHight = document.getElementsByClassName("userinfo-article-box")[0]
-      .scrollHeight;
+      .scrollHeight; //div内容总高度
     let _this = this;
     // console.log($(".userinfo-article-box").scrollTop());
     $(".userinfo-article-box").scroll(function() {

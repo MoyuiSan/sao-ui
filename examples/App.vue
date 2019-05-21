@@ -21,6 +21,7 @@
         <MenuBtn slot="btn" id="1" system="1">
           <MenuItem id="1" to="/user" name="个人信息"></MenuItem>
           <MenuItem id="2" to="/fold" name="我的收藏"></MenuItem>
+          <MenuItem id="3" to="/index" name="首页"></MenuItem>
         </MenuBtn>
         <MenuBtn slot="btn" id="2" system="2">
           <MenuItem></MenuItem>
@@ -153,9 +154,11 @@ export default {
   text-align: center;
   color: #2c3e50;
   /* margin-top: 60px; */
-  height: 1040px;
+  height: 900px;
+  min-height: 900px;
   /* background-color: aliceblue; */
   background-image: url("../examples/assets/img/bg1.jpg");
+  background-attachment: fixed;
   background-size: cover;
 }
 @font-face {
@@ -200,9 +203,11 @@ export default {
   /* background-color: white; */
   z-index: 100;
 }
-.flexbox{
+.flexbox {
+  position: relative;
   display: flex;
   width: 100%;
+  /* min-height: 948px; */
   height: 100%;
   justify-content: center;
   align-items: center;
