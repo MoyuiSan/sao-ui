@@ -6,15 +6,13 @@
       :key="index"
       :style="{top:boxList[index].top+'px',left:boxList[index].left+'px',transform: boxList[index].scale}"
       name="sao"
-      @mouseover="myOver"
+      @mouseenter="myOver"
       @mouseleave="myLeave"
     >
       {{index}}
       <div class="indexbox-main-info">
-        <p>
-          发布者：大阿达
-          <br>发布时间：2019-9-2
-        </p>
+        <p>发布者：大阿达</p>
+        <p>发布时间：大阿达</p>
       </div>
     </div>
   </div>
@@ -61,12 +59,12 @@ export default {
   position: relative;
   width: 100%;
   height: 100%;
-  //   background-color: rgb(221, 221, 221);
   display: flex;
+  opacity: 0.8;
   //   justify-content: center;
   //   align-items: center;
-  background-color: rgb(221, 221, 221);
-  box-sizing: border-box;
+//   background-color: rgb(221, 221, 221);
+  //   box-sizing: border-box;
   //   transform-style: preserve-3d;
   //   perspective: 700;
   //   transform: translateZ(1200px);
@@ -80,6 +78,9 @@ export default {
     // box-shadow: 0px 0px 5px white;
     // border: 1px solid white;
     cursor: pointer;
+    &:hover {
+      box-shadow: 0px 0px 5px white;
+    }
   }
   .indexbox-main-info {
     position: absolute;
@@ -91,10 +92,20 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     color: white;
+    animation: showInfo 0.4s ease-in-out;
     p {
       font-size: 12px;
     }
+  }
+}
+@keyframes showInfo {
+  0% {
+    background-color: rgba(0, 0, 0, 0);
+  }
+  100% {
+    background-color: rgba(0, 0, 0, 0.5);
   }
 }
 </style>
