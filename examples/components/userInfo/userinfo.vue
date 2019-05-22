@@ -355,7 +355,7 @@ export default {
     height: 50px;
   }
   80% {
-    height: 600px;
+    height: 560px;
   }
   100% {
     height: 560px;

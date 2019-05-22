@@ -1,5 +1,5 @@
 <template>
-  <div id="app" @dblclick="showMenu">
+  <div id="app" @dblclick="showMenu" @keyup.esc="showMenu">
     <div class="welcome" v-if="ishow">
       <input class="welcome-txt" type="text" :value="txt">
       <div class="notouch"></div>
@@ -19,12 +19,13 @@
     <div>
       <SaoMenu :ShowMask="isShowMenu" ref="mask">
         <MenuBtn slot="btn" id="1" system="1">
-          <MenuItem id="1" to="/user" name="个人信息"></MenuItem>
-          <MenuItem id="2" to="/fold" name="我的收藏"></MenuItem>
-          <MenuItem id="3" to="/index" name="首页"></MenuItem>
+          <MenuItem id="1" to="/index" name="首页"></MenuItem>
+          <MenuItem id="2" to="/user" name="个人信息"></MenuItem>
+          <MenuItem id="3" to="/fold" name="我的收藏"></MenuItem>
+          <MenuItem id="3" to="/carousel" name="轮播图"></MenuItem>
         </MenuBtn>
         <MenuBtn slot="btn" id="2" system="2">
-          <MenuItem></MenuItem>
+          <MenuItem id="1" to="/input" name="输入框"></MenuItem>
         </MenuBtn>
         <MenuBtn slot="btn" id="3" system="3">
           <MenuItem id="1" to="/a" name="test1"></MenuItem>
