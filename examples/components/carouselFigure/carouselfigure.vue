@@ -1,5 +1,5 @@
 <template>
-  <div class="carousel">
+  <div class="carousel" @mouseenter="stopLunbo">
     <Canvas id="mycar" class="mycar" width="400" height="600">
       <img id="source" :src="imgUrl">
     </Canvas>
@@ -18,35 +18,24 @@
 <script>
 import img from "../../assets/img/bg1.jpg";
 import img2 from "../../assets/img/nvdi.jpg";
+import $ from "jquery";
 export default {
   name: "CarouselFigure",
   data() {
     return {
       imgUrl: img,
-      imgList: [img, img2, img, img2, img, img2]
+      imgList: [img, img2, img, img2, img, img2],
+      count: 0,
+      timer: null
     };
   },
   mounted() {
     this.showImg();
-    let _this = this;
-    let inter = null;
-    clearInterval(inter);
-    this.$nextTick(() => {
-      let count = 1;
-      inter = setInterval(() => {
-        if (count < 6) {
-          this.imgUrl = this.imgList[count];
-          this.showImg();
-          count++;
-          console.log(count);
-        } else if (count == 6) {
-          count = count - 6;
-          this.imgUrl = this.imgList[count];
-          this.showImg();
-          console.log(count);
-        }
-      }, 1000);
-    });
+    this.startLunbo();
+  },
+  beforeDestroy() {
+    clearTimeout(this.timer);
+    this.timer = null;
   },
   methods: {
     //展示图显示
@@ -54,31 +43,83 @@ export default {
       let source = document.getElementById("source");
       // let ctx = document.getElementById("mycar").getContext("2d");
       // ctx.drawImage(source, 0, 0, 400, 600);
-      let ctx = document.getElementById("mycar").getContext("2d");
-      let offset = 200;
-      source.onload = function() {
-        ctx.clearRect(0, 0, 400, 600);
-        //   let ctx = document.getElementById("mycar").getContext("2d");
-        let inter = setInterval(function() {
-          offset -= 4;
-          if (offset >= 0) {
-            ctx.drawImage(source, 0, 0, 400, 200, offset, 0, 400, 200);
-            ctx.drawImage(source, 0, 200, 400, 200, -offset, 200, 400, 200);
-            ctx.drawImage(source, 0, 400, 400, 200, offset, 400, 400, 200);
-          } else {
-            clearInterval(inter);
-            inter = null;
-          }
-        }, 16);
-      };
+      try {
+        let ctx = document.getElementById("mycar").getContext("2d");
+        let offset = 200;
+        // ctx.clearRect(0, 0, 400, 600);
+        source.onload = function() {
+          let inter = setInterval(function() {
+            offset -= 4;
+            if (offset >= 0) {
+              ctx.drawImage(source, 0, 0, 400, 200, offset, 0, 400, 200);
+              ctx.drawImage(source, 0, 200, 400, 200, -offset, 200, 400, 200);
+              ctx.drawImage(source, 0, 400, 400, 200, offset, 400, 400, 200);
+            } else {
+              clearInterval(inter);
+              inter = null;
+            }
+          }, 16);
+        };
+      } catch (e) {
+        console.log(e);
+      }
     },
     selectImg: function(e) {
-      //   alert(this.imgList[e.target.id]);
-      if (this.imgUrl !== this.imgList[e.target.id]) {
-        //   alert(1)
-        this.imgUrl = this.imgList[e.target.id];
-        this.showImg();
+      console.log(e.target.style);
+      if (!!e.target.id) {
+        $(".carousel-contral ul li").css("background-color", "white");
+        e.target.style.backgroundColor = "red";
+        this.count = e.target.id;
+        if (this.imgUrl !== this.imgList[e.target.id]) {
+          //   alert(1)
+          e.target.style.backgroundColor = "red";
+          this.imgUrl = this.imgList[e.target.id];
+          this.showImg();
+        }
       }
+    },
+    stopLunbo: function() {
+      // alert(1)
+      // this.timer.pause();
+      // clearTimeout(this.timer)
+    },
+    startLunbo: function() {
+      let _this = this;
+      // let inter = null;
+      // clearInterval(inter);
+      this.$nextTick(() => {
+        // let count = 1;
+        this.timer = setTimeout(function cc() {
+          //do something
+          if (_this.count < 6) {
+            _this.count++;
+            if (_this.count == 6) {
+              _this.count = _this.count - 6;
+              $(".carousel-contral ul li").css("background-color", "white");
+              $(
+                ".carousel-contral ul li:nth-child(" +
+                  (_this.count + 1).toString() +
+                  ")"
+              ).css("background-color", "red");
+              _this.imgUrl = _this.imgList[_this.count];
+              _this.showImg();
+              console.log(_this.count, "2222");
+            }
+            $(".carousel-contral ul li").css("background-color", "white");
+            $(
+              ".carousel-contral ul li:nth-child(" +
+                (_this.count + 1).toString() +
+                ")"
+            ).css("background-color", "red");
+            _this.imgUrl = _this.imgList[_this.count];
+            _this.showImg();
+            console.log(_this.count, "1111");
+          }
+          clearTimeout(_this.timer);
+          _this.timer = null;
+          setTimeout(cc, 4000);
+        }, 4000);
+      });
     }
   }
 };
@@ -115,6 +156,9 @@ export default {
         cursor: pointer;
         &:not(:first-child) {
           margin-left: 10px;
+        }
+        &:first-child {
+          background-color: red;
         }
       }
     }
