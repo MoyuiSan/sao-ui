@@ -26,7 +26,8 @@ export default {
       imgUrl: img,
       imgList: [img, img2, img, img2, img, img2],
       count: 0,
-      timer: null
+      timer: null,
+      inter: null
     };
   },
   mounted() {
@@ -34,34 +35,40 @@ export default {
     this.startLunbo();
   },
   beforeDestroy() {
-    clearTimeout(this.timer);
+    clearTimeout();
     this.timer = null;
+    clearInterval(this.inter);
+    this.inter = null;
   },
+  destroyed() {},
   methods: {
     //展示图显示
     showImg: function() {
       let source = document.getElementById("source");
       // let ctx = document.getElementById("mycar").getContext("2d");
       // ctx.drawImage(source, 0, 0, 400, 600);
+      let _this = this;
       try {
         let ctx = document.getElementById("mycar").getContext("2d");
         let offset = 200;
         // ctx.clearRect(0, 0, 400, 600);
         source.onload = function() {
-          let inter = setInterval(function() {
+          _this.inter = setInterval(function() {
             offset -= 4;
             if (offset >= 0) {
               ctx.drawImage(source, 0, 0, 400, 200, offset, 0, 400, 200);
               ctx.drawImage(source, 0, 200, 400, 200, -offset, 200, 400, 200);
               ctx.drawImage(source, 0, 400, 400, 200, offset, 400, 400, 200);
             } else {
-              clearInterval(inter);
-              inter = null;
+              clearInterval(_this.inter);
+              _this.inter = null;
             }
           }, 16);
         };
       } catch (e) {
         console.log(e);
+        clearTimeout(_this.timer);
+        _this.timer = null;
       }
     },
     selectImg: function(e) {
@@ -115,9 +122,14 @@ export default {
             _this.showImg();
             console.log(_this.count, "1111");
           }
-          clearTimeout(_this.timer);
-          _this.timer = null;
-          setTimeout(cc, 4000);
+          // clearTimeout(_this.timer);
+          // _this.timer = null;
+          console.log(_this.timer);
+          setTimeout(function() {
+            if (!!_this.timer) {
+              cc();
+            }
+          }, 4000);
         }, 4000);
       });
     }

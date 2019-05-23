@@ -29,11 +29,11 @@ export default {
         ctx.closePath();
         ctx.fillStyle = this.color;
         ctx.fill();
-        ctx.beginPath();
-        ctx.arc(this.x+random , this.y+random, this.radius, 0, Math.PI * 2, true);
-        ctx.closePath();
-        ctx.fillStyle = this.color;
-        ctx.fill();
+        // ctx.beginPath();
+        // ctx.arc(this.x+random , this.y+random, this.radius, 0, Math.PI * 2, true);
+        // ctx.closePath();
+        // ctx.fillStyle = this.color;
+        // ctx.fill();
       }
     };
     function draw() {

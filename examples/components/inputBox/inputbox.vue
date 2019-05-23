@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div @mouseenter="testss">
     <div id="editor" style="  background:white"></div>
   </div>
 </template>
@@ -14,18 +14,15 @@ export default {
   mounted() {
     this.editor = new Editor("#editor");
     this.editor.create();
-    this.editor.customConfig.colors = [
-      "#000000",
-      "#eeece0",
-      "#1c487f",
-      "#4d80bf",
-      "#c24f4a",
-      "#8baa4a",
-      "#7b5ba1",
-      "#46acc8",
-      "#f9963b",
-      "#ffffff"
-    ];
+    this.editor.customConfig.linkImgCallback = function(url) {
+      console.log(url); // url 即插入图片的地址
+    };
+    console.log(this.editor.txt.html());
+  },
+  methods: {
+    testss: function() {
+      console.log(this.editor.txt.html());
+    }
   }
 };
 </script>

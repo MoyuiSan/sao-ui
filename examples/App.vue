@@ -21,7 +21,7 @@
         <MenuBtn slot="btn" id="1" system="1">
           <MenuItem id="1" to="/index" name="首页"></MenuItem>
           <MenuItem id="2" to="/user" name="个人信息"></MenuItem>
-          <MenuItem id="3" to="/fold" name="我的收藏"></MenuItem>
+          <MenuItem id="3" to="/fold" name="折叠面板"></MenuItem>
           <MenuItem id="3" to="/carousel" name="轮播图"></MenuItem>
         </MenuBtn>
         <MenuBtn slot="btn" id="2" system="2">
