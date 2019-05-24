@@ -44,31 +44,36 @@ export default {
   methods: {
     //展示图显示
     showImg: function() {
-      let source = document.getElementById("source");
-      // let ctx = document.getElementById("mycar").getContext("2d");
-      // ctx.drawImage(source, 0, 0, 400, 600);
-      let _this = this;
-      try {
-        let ctx = document.getElementById("mycar").getContext("2d");
-        let offset = 200;
-        // ctx.clearRect(0, 0, 400, 600);
-        source.onload = function() {
-          _this.inter = setInterval(function() {
-            offset -= 4;
-            if (offset >= 0) {
-              ctx.drawImage(source, 0, 0, 400, 200, offset, 0, 400, 200);
-              ctx.drawImage(source, 0, 200, 400, 200, -offset, 200, 400, 200);
-              ctx.drawImage(source, 0, 400, 400, 200, offset, 400, 400, 200);
-            } else {
-              clearInterval(_this.inter);
-              _this.inter = null;
-            }
-          }, 16);
-        };
-      } catch (e) {
-        console.log(e);
-        clearTimeout(_this.timer);
-        _this.timer = null;
+      console.log(document.visibilityState);
+      let ctx = document.getElementById("mycar").getContext("2d");
+      let offset = 200;
+      if (document.visibilityState == "visible") {
+        let source = document.getElementById("source");
+        // let ctx = document.getElementById("mycar").getContext("2d");
+        // ctx.drawImage(source, 0, 0, 400, 600);
+        let _this = this;
+        try {
+          // ctx.clearRect(0, 0, 400, 600);
+          source.onload = function() {
+            _this.inter = setInterval(function() {
+              offset -= 4;
+              if (offset >= 0) {
+                ctx.drawImage(source, 0, 0, 400, 200, offset, 0, 400, 200);
+                ctx.drawImage(source, 0, 200, 400, 200, -offset, 200, 400, 200);
+                ctx.drawImage(source, 0, 400, 400, 200, offset, 400, 400, 200);
+              } else {
+                clearInterval(_this.inter);
+                _this.inter = null;
+              }
+            }, 16);
+          };
+        } catch (e) {
+          console.log(e);
+          clearTimeout(_this.timer);
+          _this.timer = null;
+        }
+      } else {
+        ctx.clearRect(0, 0, 400, 600);
       }
     },
     selectImg: function(e) {
@@ -91,6 +96,7 @@ export default {
       // clearTimeout(this.timer)
     },
     startLunbo: function() {
+      //页面是否离开！
       let _this = this;
       // let inter = null;
       // clearInterval(inter);
@@ -98,6 +104,7 @@ export default {
         // let count = 1;
         this.timer = setTimeout(function cc() {
           //do something
+          // console.log(document.visibilityState);
           if (_this.count < 6) {
             _this.count++;
             if (_this.count == 6) {
