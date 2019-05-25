@@ -76,6 +76,7 @@ export default {
         ctx.clearRect(0, 0, 400, 600);
       }
     },
+    //选择图片
     selectImg: function(e) {
       console.log(e.target.style);
       if (!!e.target.id) {

@@ -1,5 +1,5 @@
 <template>
-  <div id="app" @dblclick="showMenu" @keyup.esc="showMenu">
+  <div id="app" @dblclick="showMenu">
     <div class="welcome" v-if="ishow">
       <input class="welcome-txt" type="text" :value="txt">
       <div class="notouch"></div>
@@ -142,6 +142,62 @@ export default {
         _this.ishow = _this.$store.getters.isShow;
         clearTimeout(timer);
       }, 5000);
+    },
+    test: function(e) {
+      const OPTIONS = {
+        shape: "circle",
+        fill: "none",
+        radius: 25,
+        stroke: "cyan",
+        scale: {
+          0: 1
+        },
+        easing: "cubic.out"
+      };
+      let circle1 = new mojs.Shape({
+        ...OPTIONS,
+        left: 0,
+        top: 0,
+        strokeWidth: {
+          50: 0
+        }
+      });
+
+      let circle2 = new mojs.Shape({
+        ...OPTIONS,
+        radius: 10,
+        left: 0,
+        top: 0,
+        stroke: "magenta",
+        strokeWidth: {
+          15: 0
+        },
+        delay: 200
+      });
+      let x = e.clientX,
+        y = e.clientY;
+
+      // 播放圆形1动画
+      circle1
+        .tune({
+          x,
+          y,
+          onComplete() {
+            this.el.remove();
+          }
+        })
+        .replay();
+
+      // 播放圆形2动画
+      circle2
+        .tune({
+          x,
+          y,
+          onComplete() {
+            this.el.remove();
+          }
+        })
+        .replay();
     }
   }
 };
@@ -149,6 +205,7 @@ export default {
 
 <style>
 #app {
+  position: relative;
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
