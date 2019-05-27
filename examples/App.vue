@@ -249,6 +249,7 @@ html {
   border: 0px;
   outline: none;
   padding-left: 5px;
+  text-align: center;
 }
 .notouch {
   position: absolute;

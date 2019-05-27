@@ -2,19 +2,19 @@
   <div class="animate">
     <div class="animate-box" v-if="showItem">
       <div class="road">
-        <div style="background-color:white;width:300px;height:200px;"></div>
-        <div style="background-color:white;width:300px;height:500px;"></div>
-        <div style="background-color:white;width:300px;height:400px;"></div>
+        <div class="animate-box-item" style="background-color:white;width:300px;height:200px;"></div>
+        <div class="animate-box-item" style="background-color:white;width:300px;height:500px;"></div>
+        <div class="animate-box-item" style="background-color:white;width:300px;height:400px;"></div>
       </div>
       <div class="road">
-        <div style="background-color:white;width:300px;height:100px;"></div>
-        <div style="background-color:white;width:300px;height:200px;"></div>
-        <div style="background-color:white;width:300px;height:500px;"></div>
+        <div class="animate-box-item" style="background-color:white;width:300px;height:100px;"></div>
+        <div class="animate-box-item" style="background-color:white;width:300px;height:200px;"></div>
+        <div class="animate-box-item" style="background-color:white;width:300px;height:500px;"></div>
       </div>
       <div class="road">
-        <div style="background-color:white;width:300px;height:400px;"></div>
-        <div style="background-color:white;width:300px;height:200px;"></div>
-        <div style="background-color:white;width:300px;height:300px;"></div>
+        <div class="animate-box-item" style="background-color:white;width:300px;height:400px;"></div>
+        <div class="animate-box-item" style="background-color:white;width:300px;height:200px;"></div>
+        <div class="animate-box-item" style="background-color:white;width:300px;height:300px;"></div>
       </div>
     </div>
   </div>
@@ -31,6 +31,9 @@ export default {
   mounted() {
     this.htmlAnimate();
   },
+  beforeDestroy() {
+    $(".test").remove(); //删除动画节点
+  },
   methods: {
     htmlAnimate: function() {
       var _this = this;
@@ -46,7 +49,8 @@ export default {
       // 过渡时间
       const DURATION = 800;
       // 父元素图形，只用于整体的位置的变化
-      const showBase = new mojs.Shape({
+      const showBases = new mojs.Shape({
+        className: "test",
         fill: "none", //填充无
         radius: 20, //半径 大小
         x: {
@@ -67,7 +71,7 @@ export default {
       // 最后执行的圆形扩散
       const circle = new mojs.Shape({
         fill: COLORS.WHITE,
-        parent: showBase.el, // 定义父元素
+        parent: showBases.el, // 定义父元素
         radius: 50,
         scale: {
           //缩放
@@ -84,7 +88,7 @@ export default {
       const showUp = new mojs.Shape({
         fill: "none",
         stroke: COLORS.WHITE, //线条颜色
-        parent: showBase.el, // 定义父元素
+        parent: showBases.el, // 定义父元素
         radius: {
           0: 10
         },
@@ -140,7 +144,7 @@ export default {
         easing: "cubic.out"
       });
       const timelineback = new mojs.Timeline();
-      timelineback.add(showBase, circle, showUp, addButtonCross).play();
+      timelineback.add(showBases, circle, showUp, addButtonCross).play();
       function scaleAnime() {
         circle
           .tune({
@@ -154,7 +158,7 @@ export default {
             easing: "cubic.inout"
           })
           .play();
-        showBase
+        showBases
           .tune({
             onComplete() {
               this.el.remove();
@@ -191,8 +195,12 @@ export default {
     overflow-y: scroll;
     overflow-x: hidden;
     .road {
-      div {
+      .animate-box-item {
         margin-top: 10px;
+        animation: boxshow .6s ease-in;
+        animation-fill-mode: forwards;
+        box-shadow: 0px 0px 5px white;
+        transform-style: preserve-2d;
       }
     }
     &::-webkit-scrollbar {
@@ -204,6 +212,14 @@ export default {
     &::-webkit-scrollbar-thumb {
       background-color: rgb(131, 131, 131);
     }
+  }
+}
+@keyframes boxshow {
+  0% {
+    transform: scale(0.5);
+  }
+  100% {
+    transform: scale(1);
   }
 }
 </style>
