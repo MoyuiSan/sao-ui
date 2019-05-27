@@ -2,19 +2,28 @@
   <div class="animate">
     <div class="animate-box" v-if="showItem">
       <div class="road">
-        <div class="animate-box-item" style="background-color:white;width:300px;height:200px;"></div>
-        <div class="animate-box-item" style="background-color:white;width:300px;height:500px;"></div>
-        <div class="animate-box-item" style="background-color:white;width:300px;height:400px;"></div>
+        <div
+          class="animate-box-item"
+          v-for="(value,index) in road1().newA"
+          :key="index"
+          :style="{height:value.height+'px',width:value.width+'px'}"
+        >{{value}}</div>
       </div>
       <div class="road">
-        <div class="animate-box-item" style="background-color:white;width:300px;height:100px;"></div>
-        <div class="animate-box-item" style="background-color:white;width:300px;height:200px;"></div>
-        <div class="animate-box-item" style="background-color:white;width:300px;height:500px;"></div>
+        <div
+          class="animate-box-item"
+          v-for="(value,index) in road1().newB"
+          :key="index"
+          :style="{height:value.height+'px',width:value.width+'px'}"
+        >{{value}}</div>
       </div>
       <div class="road">
-        <div class="animate-box-item" style="background-color:white;width:300px;height:400px;"></div>
-        <div class="animate-box-item" style="background-color:white;width:300px;height:200px;"></div>
-        <div class="animate-box-item" style="background-color:white;width:300px;height:300px;"></div>
+        <div
+          class="animate-box-item"
+          v-for="(value,index) in road1().newC"
+          :key="index"
+          :style="{height:value.height+'px',width:value.width+'px'}"
+        >{{value}}</div>
       </div>
     </div>
   </div>
@@ -25,12 +34,80 @@ export default {
   name: "AnimateBox",
   data() {
     return {
-      showItem: false
+      showItem: false,
+      boxItem: [
+        {
+          id: 1,
+          width: "300",
+          height: "200"
+        },
+        {
+          id: 2,
+          width: "300",
+          height: "100"
+        },
+        {
+          id: 3,
+          width: "300",
+          height: "400"
+        },
+        {
+          id: 4,
+          width: "300",
+          height: "500"
+        },
+        {
+          id: 5,
+          width: "300",
+          height: "200"
+        },
+        {
+          id: 6,
+          width: "300",
+          height: "200"
+        },
+        {
+          id: 7,
+          width: "300",
+          height: "400"
+        },
+        {
+          id: 8,
+          width: "300",
+          height: "500"
+        },
+        {
+          id: 9,
+          width: "300",
+          height: "300"
+        },
+        {
+          id: 10,
+          width: "300",
+          height: "600"
+        },
+        {
+          id: 10,
+          width: "300",
+          height: "500"
+        },
+        {
+          id: 11,
+          width: "300",
+          height: "400"
+        },
+        {
+          id: 11,
+          width: "300",
+          height: "100"
+        }
+      ]
     };
   },
   mounted() {
     this.htmlAnimate();
   },
+  computed: {},
   beforeDestroy() {
     $(".test").remove(); //删除动画节点
   },
@@ -168,6 +245,52 @@ export default {
           })
           .play();
       }
+    },
+    road1: function() {
+      let newA = [],
+        newB = [],
+        newC = [];
+      newA.push(this.boxItem[0]);
+      newB.push(this.boxItem[1]);
+      newC.push(this.boxItem[2]);
+      let newAL = 0,
+        newBL = 0,
+        newCL = 0;
+      let _this = this;
+      let lenArry = [];
+      for (let i = 3; i < _this.boxItem.length; i++) {
+        lenArry = [];
+        (newAL = 0), (newBL = 0), (newCL = 0);
+        newA.forEach(function(e) {
+          newAL = newAL + parseInt(e.height);
+        });
+        newB.forEach(function(e) {
+          newBL = newBL + parseInt(e.height);
+        });
+        newC.forEach(function(e) {
+          newCL = newCL + parseInt(e.height);
+        });
+        lenArry.push(newAL);
+        lenArry.push(newBL);
+        lenArry.push(newCL);
+        let myIndex = 0;
+        let min = Math.min(...lenArry);
+        let minLen = lenArry.findIndex((val, index, arr) => {
+          return val == min;
+        });
+        switch (minLen) {
+          case 0:
+            newA.push(_this.boxItem[i]);
+            break;
+          case 1:
+            newB.push(_this.boxItem[i]);
+            break;
+          case 2:
+            newC.push(_this.boxItem[i]);
+            break;
+        }
+      }
+      return { newA: newA, newB: newB, newC: newC };
     }
   }
 };
@@ -196,8 +319,10 @@ export default {
     overflow-x: hidden;
     .road {
       .animate-box-item {
+        color: black;
+        background-color: white;
         margin-top: 10px;
-        animation: boxshow .6s ease-in;
+        animation: boxshow 0.6s normal;
         animation-fill-mode: forwards;
         box-shadow: 0px 0px 5px white;
         transform-style: preserve-2d;
