@@ -38,11 +38,16 @@ export default new Router({
             path: '/input',
             name: 'Input',
             component: resolve => require(['../components/inputBox/inputbox'], resolve)
-        }, 
-        {
+        },
+        { //轮播
             path: '/carousel',
             name: 'Carousel',
             component: resolve => require(['../components/carouselFigure/carouselfigure'], resolve)
+        },
+        { //动画
+            path: '/animate',
+            name: 'Animate',
+            component: resolve => require(['../components//animateBox/animatebox'], resolve)
         }
     ]
 })

@@ -23,6 +23,7 @@
           <MenuItem id="2" to="/user" name="个人信息"></MenuItem>
           <MenuItem id="3" to="/fold" name="折叠面板"></MenuItem>
           <MenuItem id="3" to="/carousel" name="轮播图"></MenuItem>
+          <MenuItem id="3" to="/animate" name="内容页展示"></MenuItem>
         </MenuBtn>
         <MenuBtn slot="btn" id="2" system="2">
           <MenuItem id="1" to="/input" name="输入框"></MenuItem>
@@ -227,6 +228,10 @@ export default {
   font-family: saoUI;
   margin: 0px;
   user-select: none;
+}
+body,
+html {
+  overflow: hidden;
 }
 .welcome {
   width: 100%;
