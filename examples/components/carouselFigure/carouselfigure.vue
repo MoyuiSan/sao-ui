@@ -1,5 +1,5 @@
 <template>
-  <div class="carousel" @mouseenter="stopLunbo">
+  <div class="carousel" @mouseenter="stopItem" @mouseleave="startItem">
     <Canvas id="mycar" class="mycar" width="400" height="600">
       <img id="source" :src="imgUrl">
     </Canvas>
@@ -27,7 +27,9 @@ export default {
       imgList: [img, img2, img, img2, img, img2],
       count: 0,
       timer: null,
-      inter: null
+      inter: null,
+      cc: null,
+      ss: null
     };
   },
   mounted() {
@@ -55,17 +57,18 @@ export default {
         try {
           // ctx.clearRect(0, 0, 400, 600);
           source.onload = function() {
-            _this.inter = setInterval(function() {
+            _this.inter = setInterval(ss, 16);
+            function ss() {
               offset -= 4;
               if (offset >= 0) {
                 ctx.drawImage(source, 0, 0, 400, 200, offset, 0, 400, 200);
                 ctx.drawImage(source, 0, 200, 400, 200, -offset, 200, 400, 200);
                 ctx.drawImage(source, 0, 400, 400, 200, offset, 400, 400, 200);
               } else {
-                clearInterval(_this.inter);
+                setTimeout(_this.inter);
                 _this.inter = null;
               }
-            }, 16);
+            }
           };
         } catch (e) {
           console.log(e);
@@ -78,7 +81,6 @@ export default {
     },
     //选择图片
     selectImg: function(e) {
-      console.log(e.target.style);
       if (!!e.target.id) {
         $(".carousel-contral ul li").css("background-color", "white");
         e.target.style.backgroundColor = "red";
@@ -91,10 +93,12 @@ export default {
         }
       }
     },
-    stopLunbo: function() {
-      // alert(1)
-      // this.timer.pause();
-      // clearTimeout(this.timer)
+    stopItem: function() {
+      clearTimeout(this.timer);
+      this.timer = null;
+    },
+    startItem: function() {
+      this.startLunbo();
     },
     startLunbo: function() {
       //页面是否离开！

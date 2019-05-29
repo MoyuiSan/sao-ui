@@ -23,7 +23,12 @@ export default new Router({
             path: '/canvas',
             name: 'Canvas',
             component: resolve => require(['../components/canvasBox/canvasbox'], resolve)
-        }, ,
+        },
+        { //画布测试
+            path: '/canvasT',
+            name: 'CanvasT',
+            component: resolve => require(['../components/canvasTest/canvastest'], resolve)
+        },
         { //用户信息
             path: '/user',
             name: 'User',
@@ -47,7 +52,12 @@ export default new Router({
         { //动画
             path: '/animate',
             name: 'Animate',
-            component: resolve => require(['../components//animateBox/animatebox'], resolve)
+            component: resolve => require(['../components/animateBox/animatebox'], resolve)
+        },
+        { //动画测试
+            path: '/animateT',
+            name: 'AnimateT',
+            component: resolve => require(['../components/animateTest/animatetest'], resolve)
         }
     ]
 })

@@ -112,7 +112,7 @@ export default {
     $(".test").remove(); //删除动画节点
   },
   methods: {
-    htmlAnimate: function() {
+    htmlAnimate: function() {//加载动画
       var _this = this;
       // 颜色
       const COLORS = {
@@ -246,7 +246,7 @@ export default {
           .play();
       }
     },
-    road1: function() {
+    road1: function() {//瀑布流代码
       let newA = [],
         newB = [],
         newC = [];
