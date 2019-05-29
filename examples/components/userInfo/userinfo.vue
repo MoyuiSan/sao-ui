@@ -131,6 +131,7 @@ export default {
 };
 </script>
 <style lang="less" scoped>
+@globalcolor: rgb (241, 241, 241);
 .userinfo {
   position: relative;
   width: 1150px;
@@ -147,7 +148,7 @@ export default {
     height: 510px;
     // background-color: black;
     box-sizing: border-box;
-    border: 1px solid rgb(221, 221, 221);
+    border: 1px solid rgb(241, 241, 241);
     display: flex;
     flex-direction: column;
     .aside-top {
@@ -251,8 +252,8 @@ export default {
         align-items: center;
         button {
           outline: none;
-          background-color: rgb(221, 221, 221);
-          border: 1px solid rgb(221, 221, 221);
+          background-color: whitesmoke;
+          border: 1px solid rgb(241, 241, 241);
           border-radius: 5px;
           padding-top: 5px;
           padding-left: 10px;
@@ -260,7 +261,7 @@ export default {
           padding-right: 10px;
           cursor: pointer;
           &:hover {
-            background-color: rgb(240, 240, 240);
+            background-color: rgb(221, 221, 221);
             transition: background-color 0.2s ease-in-out;
           }
         }
@@ -272,7 +273,7 @@ export default {
     width: 70%;
     height: 510px;
     box-sizing: border-box;
-    border: 1px solid rgb(221, 221, 221);
+    border: 1px solid rgb(241, 241, 241);
     .userinfo-article-title {
       color: white;
       text-align: left;
@@ -293,7 +294,7 @@ export default {
       &::-webkit-scrollbar {
         width: 6px;
         height: 6px;
-        background-color: rgb(221, 221, 221);
+        background-color: rgb(241, 241, 241);
       }
       &::-webkit-scrollbar-thumb {
         background-color: white;
@@ -332,7 +333,7 @@ export default {
     position: absolute;
     width: 100%;
     height: 25px;
-    background-color: rgb(221, 221, 221);
+    background-color: rgb(241, 241, 241);
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     left: 0;
@@ -343,7 +344,7 @@ export default {
     position: absolute;
     width: 100%;
     height: 25px;
-    background-color: rgb(221, 221, 221);
+    background-color: rgb(241, 241, 241);
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     left: 0;

@@ -9,7 +9,7 @@ export default {
   },
   mounted() {
     const shaoe = new mojs.Shape({
-      fill: "#FD5061",
+      fill: "white",
       radius: 15,
       shape:"equal",
     }).play();
