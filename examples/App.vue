@@ -42,7 +42,9 @@
     <!-- <SaoCard></SaoCard> -->
     <!-- <ShareWall :imglist="imgList"></ShareWall> -->
     <div class="flexbox">
-      <router-view></router-view>
+      <transition name="transitionRouter" mode="out-in">
+        <router-view></router-view>
+      </transition>
     </div>
   </div>
 </template>
@@ -107,6 +109,11 @@ export default {
     //   console.log(_this.ishow);
     //   clearTimeout(timer);
     // }, 100);
+    $(document).keydown(function(event) {
+      if (event.keyCode == 122) {
+        location.reload(); //监听键盘事件，刷新页面
+      }
+    });
   },
   components: {
     // HelloWorld
@@ -275,5 +282,13 @@ html {
   height: 100%;
   justify-content: center;
   align-items: center;
+}
+.transitionRouter-enter-active,
+.transitionRouter-leave-active {
+  transition: all 0.4s;
+}
+.transitionRouter-enter,
+.transitionRouter-leave {
+  transform: translate3d(0, 100%, 0);
 }
 </stylel>

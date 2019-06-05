@@ -37,7 +37,7 @@ export default new Router({
         { //首页
             path: '/index',
             name: 'Index',
-            component: resolve => require(['../components/indexBox/index'], resolve)
+            component: resolve => require(['../components/indexBox2/index'], resolve)
         },
         { //输入框
             path: '/input',

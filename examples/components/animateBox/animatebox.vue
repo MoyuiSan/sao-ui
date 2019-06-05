@@ -1,10 +1,10 @@
 <template>
   <div class="animate">
-    <div class="animate-box" v-if="showItem">
+    <div class="animate-box" v-show="showItem">
       <div class="road">
         <div
           class="animate-box-item"
-          v-for="(value,index) in road1().newA"
+          v-for="(value,index) in road1(this.nowCount).newA"
           :key="index"
           :style="{height:value.height+'px',width:value.width+'px'}"
         >{{value}}</div>
@@ -12,7 +12,7 @@
       <div class="road">
         <div
           class="animate-box-item"
-          v-for="(value,index) in road1().newB"
+          v-for="(value,index) in road1(this.nowCount).newB"
           :key="index"
           :style="{height:value.height+'px',width:value.width+'px'}"
         >{{value}}</div>
@@ -20,7 +20,7 @@
       <div class="road">
         <div
           class="animate-box-item"
-          v-for="(value,index) in road1().newC"
+          v-for="(value,index) in road1(this.nowCount).newC"
           :key="index"
           :style="{height:value.height+'px',width:value.width+'px'}"
         >{{value}}</div>
@@ -97,22 +97,50 @@ export default {
           height: "400"
         },
         {
-          id: 11,
+          id: 12,
           width: "300",
-          height: "100"
+          height: "600"
+        },
+        {
+          id: 13,
+          width: "300",
+          height: "200"
+        },
+        {
+          id: 14,
+          width: "300",
+          height: "500"
+        },
+        {
+          id: 15,
+          width: "300",
+          height: "200"
+        },
+        {
+          id: 16,
+          width: "300",
+          height: "500"
+        },
+        {
+          id: 17,
+          width: "300",
+          height: "300"
         }
-      ]
+      ],
+      nowCount: 10
     };
   },
   mounted() {
     this.htmlAnimate();
+    this.scrollButtom();
   },
   computed: {},
   beforeDestroy() {
     $(".test").remove(); //删除动画节点
   },
   methods: {
-    htmlAnimate: function() {//加载动画
+    htmlAnimate: function() {
+      //加载动画
       var _this = this;
       // 颜色
       const COLORS = {
@@ -246,7 +274,8 @@ export default {
           .play();
       }
     },
-    road1: function() {//瀑布流代码
+    road1: function(count) {
+      //瀑布流代码
       let newA = [],
         newB = [],
         newC = [];
@@ -258,7 +287,7 @@ export default {
         newCL = 0;
       let _this = this;
       let lenArry = [];
-      for (let i = 3; i < _this.boxItem.length; i++) {
+      for (let i = 3; i < count; i++) {
         lenArry = [];
         (newAL = 0), (newBL = 0), (newCL = 0);
         newA.forEach(function(e) {
@@ -291,6 +320,33 @@ export default {
         }
       }
       return { newA: newA, newB: newB, newC: newC };
+    },
+    scrollButtom: function() {
+      let nScrollHight = 0; //滚动距离总长(注意不是滚动条的长度)
+      let nScrollTop = 0; //滚动到的当前位置
+      let nDivHight = 0; //div内容总高度
+      let _this = this;
+      // console.log($(".userinfo-article-box").scrollTop());
+      $(".animate").scroll(function() {
+        nScrollHight = $(".animate").height();
+        nDivHight = document.getElementsByClassName("animate")[0].scrollHeight;
+        nScrollTop = $(".animate").scrollTop();
+        // console.log(nScrollTop);
+        // console.log(nScrollHight);
+        // console.log(nDivHight);
+        if (nScrollHight + nScrollTop == nDivHight) {
+          _this.isLoading = true;
+          console.log("到底了！");
+          if (_this.boxItem.length - _this.nowCount >= 6) {
+            _this.nowCount = _this.nowCount + 6;
+          } else {
+            _this.nowCount = _this.boxItem.length;
+          }
+          _this.road1(_this.nowCount);
+        } else {
+          _this.isLoading = false;
+        }
+      });
     }
   }
 };
@@ -309,14 +365,22 @@ export default {
   //   overflow: hidden;
   display: flex;
   justify-content: center;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    background-color: white;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: rgb(131, 131, 131);
+  }
   .animate-box {
     width: 930px;
     height: auto;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    overflow-y: scroll;
-    overflow-x: hidden;
     .road {
       .animate-box-item {
         color: black;
@@ -327,15 +391,6 @@ export default {
         box-shadow: 0px 0px 5px white;
         transform-style: preserve-2d;
       }
-    }
-    &::-webkit-scrollbar {
-      width: 6px;
-      height: 6px;
-      background-color: white;
-      display: none;
-    }
-    &::-webkit-scrollbar-thumb {
-      background-color: rgb(131, 131, 131);
     }
   }
 }

@@ -47,14 +47,14 @@ export default {
     //展示图显示
     showImg: function() {
       console.log(document.visibilityState);
-      let ctx = document.getElementById("mycar").getContext("2d");
-      let offset = 200;
       if (document.visibilityState == "visible") {
         let source = document.getElementById("source");
         // let ctx = document.getElementById("mycar").getContext("2d");
         // ctx.drawImage(source, 0, 0, 400, 600);
-        let _this = this;
         try {
+          let _this = this;
+          let ctx = document.getElementById("mycar").getContext("2d");
+          let offset = 200;
           // ctx.clearRect(0, 0, 400, 600);
           source.onload = function() {
             _this.inter = setInterval(ss, 16);
