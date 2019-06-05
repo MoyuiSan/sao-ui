@@ -8,11 +8,19 @@ export default {
     return {};
   },
   mounted() {
-    const shaoe = new mojs.Shape({
-      fill: "white",
-      radius: 15,
-      shape:"equal",
-    }).play();
+let rect = new mojs.Shape({
+  shape: 'rect',
+  fill: 'none',
+  stroke: 'cyan',
+  radius: 10,
+  strokeWidth: 20, // 画笔宽度
+  angle: {
+    [-180]: 0 // 使用对象的形式设置，key为开始值，val为结束值（任何属性都可以设置过渡）
+  },
+  delay:500,
+  repeat:Infinity 
+// duration: 400 // 默认为300ms
+}).play()
     // Notification.requestPermission().then(function(permission) {
     //   if (permission === "granted") {
     //     console.log("用户允许通知");
