@@ -370,10 +370,10 @@ export default {
   &::-webkit-scrollbar {
     width: 6px;
     height: 6px;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0);
   }
   &::-webkit-scrollbar-thumb {
-    background-color: rgb(131, 131, 131);
+    background-color: rgba(255, 255, 255, 0);
   }
   .animate-box {
     width: 930px;

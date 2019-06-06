@@ -139,7 +139,7 @@ export default {
   background-color: rgba(255, 255, 255, 0.3);
   border-radius: 10px;
   overflow: hidden;
-  animation: showBox 0.4s ease-in-out;
+  // animation: showBox 0.4s ease-in-out;
   display: flex;
   align-items: center;
   box-shadow: 0px 0px 10px white;
