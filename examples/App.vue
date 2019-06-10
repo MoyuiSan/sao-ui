@@ -220,8 +220,8 @@ export default {
   text-align: center;
   color: #2c3e50;
   /* margin-top: 60px; */
-  height: 900px;
-  min-height: 900px;
+  /* height: 900px;
+  min-height: 900px; */
   /* background-color: aliceblue; */
   background-image: url("../examples/assets/img/bg1.jpg");
   background-attachment: fixed;

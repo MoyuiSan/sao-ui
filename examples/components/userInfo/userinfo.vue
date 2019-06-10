@@ -277,7 +277,8 @@ export default {
     .userinfo-article-title {
       color: white;
       text-align: left;
-      padding: 10px;
+      padding-top: 10px;
+      padding-left: 15px;
       box-sizing: border-box;
       border-bottom: 1px solid rgb(221, 221, 221);
       height: 43px;
