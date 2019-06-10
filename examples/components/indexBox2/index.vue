@@ -1,5 +1,5 @@
 <template>
-  <div class="index2">
+  <div id="index2" class="index2" @click="loveAndpeace">
     <div class="banner">
       <div class="banner-logo"></div>
       <div class="banner-left">
@@ -10,6 +10,7 @@
       </div>
       <div class="banner-right">
         <div class="banner-right-info" @mouseenter="test" @mouseleave="test2">
+          <img class="banner-right-img" :src="userImg">
           <transition name="info">
             <div class="abs-userinfo" v-if="isInfo">12312</div>
           </transition>
@@ -22,12 +23,28 @@
 </template>
 <script>
 import $ from "jquery";
+import userimg from "../../assets/logo.png";
 export default {
   name: "IndexBox2",
   data() {
     return {
-      power: ["富强", "民主", "法治", "文明"],
-      isInfo: false
+      power: [
+        "富强",
+        "民主",
+        "文明",
+        "和谐",
+        "自由",
+        "平等",
+        "公正",
+        "法治",
+        "爱国",
+        "敬业",
+        "诚信",
+        "友善"
+      ], //"富强"、"民主"、"文明"、"和谐"，"自由"、"平等"、"公正"、"法治"，"爱国"、"敬业"、"诚信"、"友善"
+      isInfo: false,
+      userImg: userimg,
+      powerI: 0
     };
   },
   mounted() {
@@ -42,15 +59,51 @@ export default {
     },
     test: function() {
       this.isInfo = true;
+      $(".banner-right-img").addClass("showimg");
+      $(".banner-right-img").removeClass("noshowimg");
     },
     test2: function() {
       this.isInfo = false;
+      $(".banner-right-img").addClass("noshowimg");
+      $(".banner-right-img").removeClass("showimg");
+    },
+    loveAndpeace(e) {
+      let myLoveX = e.clientX + "px";
+      let myLoveY = e.clientY + "px";
+      var _this = this;
+      function addTips() {
+        $("#index2").append(
+          "<div id='mylove" +
+            _this.powerI +
+            "' style='position:fixed;top:" +
+            myLoveY +
+            ";left:" +
+            myLoveX +
+            ";color:red;'>" +
+            _this.power[_this.powerI % 12] +
+            "!" +
+            "</div>"
+        );
+        let now = _this.powerI;
+        let timer = setTimeout(() => {
+          $("#mylove" + now).remove();
+          clearTimeout(timer);
+        }, 1000);
+      }
+      async function count() {
+        const test = await addTips();
+        return test;
+      }
+      count().then(() => {
+        _this.powerI++;
+      });
     }
   }
 };
 </script>
 <style lang="less" scoped>
 .index2 {
+  position: relative;
   width: 100%;
   height: 100%;
   background-color: rgb(172, 172, 172);
@@ -97,9 +150,24 @@ export default {
       position: relative;
       width: 50px;
       height: 50px;
-      background-color: red;
       margin-right: 20px;
-      cursor: pointer;
+      // cursor: pointer;
+      img {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        z-index: 10;
+        // animation-fill-mode: forwards;
+        cursor: pointer;
+      }
+      .showimg {
+        animation: imgDo 0.4s ease-in-out;
+        animation-fill-mode: forwards;
+      }
+      .noshowimg {
+        animation: noimgDo 0.4s ease-in-out;
+        animation-fill-mode: forwards;
+      }
     }
     .banner-right-txt {
       width: 80px;
@@ -111,6 +179,9 @@ export default {
       font-size: 14px;
     }
   }
+}
+.mylove{
+  position: fixed;
 }
 .abs-userinfo {
   position: absolute;
@@ -129,22 +200,46 @@ export default {
 }
 @keyframes showInfo {
   0% {
-    top: -210px;
     transform: scale(0);
   }
   100% {
-    top: 50px;
     transform: scale(1);
   }
 }
 @keyframes noInfo {
   0% {
-    top: 50px;
     transform: scale(1);
   }
   100% {
-    top: -210px;
     transform: scale(0);
+  }
+}
+@keyframes imgDo {
+  0% {
+    top: 0px;
+    transform: scale(1);
+  }
+  100% {
+    top: 25px;
+    transform: scale(1.2);
+  }
+}
+@keyframes noimgDo {
+  0% {
+    top: 25px;
+    transform: scale(1.2);
+  }
+  100% {
+    top: 0px;
+    transform: scale(1);
+  }
+}
+@keyframes wordHide {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
 </style>

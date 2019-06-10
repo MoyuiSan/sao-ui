@@ -111,7 +111,7 @@ export default {
     // }, 100);
     $(document).keydown(function(event) {
       if (event.keyCode == 122) {
-        location.reload(); //监听键盘事件，刷新页面
+        location.reload();
       }
     });
   },
