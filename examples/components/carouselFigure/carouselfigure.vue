@@ -26,10 +26,11 @@ export default {
       imgUrl: img,
       imgList: [img, img2, img, img2, img, img2],
       count: 0,
-      timer: null,
+      inter2: null,
       inter: null,
       cc: null,
-      ss: null
+      ss: null,
+      interLock: 0
     };
   },
   mounted() {
@@ -65,8 +66,9 @@ export default {
                 ctx.drawImage(source, 0, 200, 400, 200, -offset, 200, 400, 200);
                 ctx.drawImage(source, 0, 400, 400, 200, offset, 400, 400, 200);
               } else {
-                setTimeout(_this.inter);
+                clearInterval(_this.inter);
                 _this.inter = null;
+                _this.interLock = 0;
               }
             }
           };
@@ -81,12 +83,13 @@ export default {
     },
     //选择图片
     selectImg: function(e) {
-      if (!!e.target.id) {
+      if (!!e.target.id && this.interLock == 0) {
         $(".carousel-contral ul li").css("background-color", "white");
         e.target.style.backgroundColor = "red";
         this.count = e.target.id;
         if (this.imgUrl !== this.imgList[e.target.id]) {
-          //   alert(1)
+          // alert(1);
+          this.interLock = 1;
           e.target.style.backgroundColor = "red";
           this.imgUrl = this.imgList[e.target.id];
           this.showImg();
@@ -97,54 +100,8 @@ export default {
       clearTimeout(this.timer);
       this.timer = null;
     },
-    startItem: function() {
-      this.startLunbo();
-    },
-    startLunbo: function() {
-      //页面是否离开！
-      let _this = this;
-      // let inter = null;
-      // clearInterval(inter);
-      this.$nextTick(() => {
-        // let count = 1;
-        this.timer = setTimeout(function cc() {
-          //do something
-          // console.log(document.visibilityState);
-          if (_this.count < 6) {
-            _this.count++;
-            if (_this.count == 6) {
-              _this.count = _this.count - 6;
-              $(".carousel-contral ul li").css("background-color", "white");
-              $(
-                ".carousel-contral ul li:nth-child(" +
-                  (_this.count + 1).toString() +
-                  ")"
-              ).css("background-color", "red");
-              _this.imgUrl = _this.imgList[_this.count];
-              _this.showImg();
-              console.log(_this.count, "2222");
-            }
-            $(".carousel-contral ul li").css("background-color", "white");
-            $(
-              ".carousel-contral ul li:nth-child(" +
-                (_this.count + 1).toString() +
-                ")"
-            ).css("background-color", "red");
-            _this.imgUrl = _this.imgList[_this.count];
-            _this.showImg();
-            console.log(_this.count, "1111");
-          }
-          // clearTimeout(_this.timer);
-          // _this.timer = null;
-          console.log(_this.timer);
-          setTimeout(function() {
-            if (!!_this.timer) {
-              cc();
-            }
-          }, 4000);
-        }, 4000);
-      });
-    }
+    startItem: function() {},
+    startLunbo: function() {}
   }
 };
 </script>
