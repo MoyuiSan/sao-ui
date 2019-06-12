@@ -1,5 +1,5 @@
 <template>
-  <div id="index2" class="index2" @click="loveAndpeace">
+  <div id="index2" class="index2">
     <div class="banner">
       <div class="banner-logo"></div>
       <div class="banner-left">
@@ -17,6 +17,12 @@
         </div>
         <div class="banner-right-txt">登陆</div>
         <div class="banner-right-txt">消息</div>
+      </div>
+    </div>
+    <div class="search">
+      <div class="search-box">
+        <input type="text" placeholder="快来搜搜吧！">
+        <button>lasd</button>
       </div>
     </div>
   </div>
@@ -66,38 +72,38 @@ export default {
       this.isInfo = false;
       $(".banner-right-img").addClass("noshowimg");
       $(".banner-right-img").removeClass("showimg");
-    },
-    loveAndpeace(e) {
-      let myLoveX = e.clientX + "px";
-      let myLoveY = e.clientY + "px";
-      var _this = this;
-      function addTips() {
-        $("#index2").append(
-          "<div id='mylove" +
-            _this.powerI +
-            "' style='position:fixed;top:" +
-            myLoveY +
-            ";left:" +
-            myLoveX +
-            ";color:red;'>" +
-            _this.power[_this.powerI % 12] +
-            "!" +
-            "</div>"
-        );
-        let now = _this.powerI;
-        let timer = setTimeout(() => {
-          $("#mylove" + now).remove();
-          clearTimeout(timer);
-        }, 1000);
-      }
-      async function count() {
-        const test = await addTips();
-        return test;
-      }
-      count().then(() => {
-        _this.powerI++;
-      });
     }
+    // loveAndpeace(e) {
+    //   let myLoveX = e.clientX + "px";
+    //   let myLoveY = e.clientY + "px";
+    //   var _this = this;
+    //   function addTips() {
+    //     $("#index2").append(
+    //       "<div id='mylove" +
+    //         _this.powerI +
+    //         "' style='position:fixed;top:" +
+    //         myLoveY +
+    //         ";left:" +
+    //         myLoveX +
+    //         ";color:red;'>" +
+    //         _this.power[_this.powerI % 12] +
+    //         "!" +
+    //         "</div>"
+    //     );
+    //     let now = _this.powerI;
+    //     let timer = setTimeout(() => {
+    //       $("#mylove" + now).remove();
+    //       clearTimeout(timer);
+    //     }, 1000);
+    //   }
+    //   async function count() {
+    //     const test = await addTips();
+    //     return test;
+    //   }
+    //   count().then(() => {
+    //     _this.powerI++;
+    //   });
+    // }
   }
 };
 </script>
@@ -108,12 +114,49 @@ export default {
   height: 100%;
   background-color: rgb(172, 172, 172);
 }
+.search {
+  position: relative;
+  display: flex;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 140px;
+  background-color: white;
+  justify-content: center;
+  bottom: 20px;
+  .search-box {
+    position: absolute;
+    height: 30px;
+    bottom: 30px;
+    input {
+      height: 25px;
+      width: 200px;
+      text-indent: 4px;
+      box-sizing: border-box;
+      outline: none;
+    }
+    button{
+     height: 25px;
+     width: 40px;
+     margin-left: 5px;
+     background-color: black;
+     outline: none;
+     border: 0;
+     color: white;
+     cursor: pointer;
+    }
+  }
+}
 .banner {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 50px;
-  background-color: white;
+  background-color: rgba(241, 241, 241, 0.6);
   display: flex;
   justify-content: center;
+  z-index: 20;
   .banner-logo {
     width: 120px;
     height: 100%;
@@ -135,8 +178,8 @@ export default {
       cursor: pointer;
       box-sizing: border-box;
       &:hover {
-        border-bottom: 1px solid blue;
-        background-color: rgb(241, 241, 241);
+        border-bottom: 1px solid rgb(202, 202, 202);
+        background-color: rgb(202, 202, 202);
       }
     }
   }
@@ -180,7 +223,7 @@ export default {
     }
   }
 }
-.mylove{
+.mylove {
   position: fixed;
 }
 .abs-userinfo {

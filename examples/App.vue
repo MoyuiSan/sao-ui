@@ -22,8 +22,9 @@
           <MenuItem id="1" to="/index" name="首页"></MenuItem>
           <MenuItem id="2" to="/user" name="个人信息"></MenuItem>
           <MenuItem id="3" to="/fold" name="折叠面板"></MenuItem>
-          <MenuItem id="3" to="/carousel" name="轮播图"></MenuItem>
-          <MenuItem id="3" to="/animate" name="内容页展示"></MenuItem>
+          <MenuItem id="4" to="/carousel" name="轮播图"></MenuItem>
+          <MenuItem id="5" to="/animate" name="内容页展示"></MenuItem>
+          <MenuItem id="6" to="/ranking" name="排行列表"></MenuItem>
         </MenuBtn>
         <MenuBtn slot="btn" id="2" system="2">
           <MenuItem id="1" to="/input" name="输入框"></MenuItem>
@@ -226,6 +227,7 @@ export default {
   background-image: url("../examples/assets/img/bg1.jpg");
   background-attachment: fixed;
   background-size: cover;
+  overflow: hidden;
 }
 @font-face {
   font-family: "saoUI";
@@ -239,6 +241,13 @@ export default {
 body,
 html {
   overflow: hidden;
+}
+
+html::-webkit-scrollbar {
+  display: block;
+}
+html::-webkit-scrollbar-thumb {
+  display: block;
 }
 .welcome {
   width: 100%;
@@ -278,7 +287,7 @@ html {
   position: relative;
   display: flex;
   width: 100%;
-  /* min-height: 948px; */
+  min-width: 1200px;
   height: 100%;
   justify-content: center;
   align-items: center;

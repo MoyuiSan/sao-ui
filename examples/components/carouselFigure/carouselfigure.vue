@@ -62,6 +62,7 @@ export default {
             function ss() {
               offset -= 4;
               if (offset >= 0) {
+                _this.interLock = 1;
                 ctx.drawImage(source, 0, 0, 400, 200, offset, 0, 400, 200);
                 ctx.drawImage(source, 0, 200, 400, 200, -offset, 200, 400, 200);
                 ctx.drawImage(source, 0, 400, 400, 200, offset, 400, 400, 200);
@@ -101,7 +102,29 @@ export default {
       this.timer = null;
     },
     startItem: function() {},
-    startLunbo: function() {}
+    startLunbo: function() {
+      setInterval(() => {
+        if (this.count < 6) {
+          $(".carousel-contral ul li").css("background-color", "white");
+          $(".carousel-contral ul li")
+            .eq(this.count)
+            .css("background-color", "red");
+          this.imgUrl = this.imgList[this.count];
+          this.showImg();
+          this.count++;
+          console.log(this.count);
+        } else {
+          console.log(this.count);
+          this.count = 0;
+          $(".carousel-contral ul li").css("background-color", "white");
+          $(".carousel-contral ul li")
+            .eq(this.count)
+            .css("background-color", "red");
+          this.imgUrl = this.imgList[this.count];
+          this.showImg();
+        }
+      }, 4000);
+    }
   }
 };
 </script>

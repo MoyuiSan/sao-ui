@@ -58,6 +58,11 @@ export default new Router({
             path: '/animateT',
             name: 'AnimateT',
             component: resolve => require(['../components/animateTest/animatetest'], resolve)
+        },//排行榜 
+        {
+            path: '/ranking',
+            name: 'Ranking',
+            component: resolve => require(['../components/rankingList/rankinglist'], resolve)
         }
     ]
 })
