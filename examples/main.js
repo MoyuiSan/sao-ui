@@ -4,6 +4,8 @@ import SaoUI from '../packages/index'
 import router from './router/index'
 import Mojs from 'mo-js'
 import 'lib-flexible/flexible'
+import Blob from '../excel/Blob.js'
+import Export2Excel from '../excel/Export2Excel.js'
 import {
   store
 } from './store/store'

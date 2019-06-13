@@ -139,7 +139,6 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-@globalcolor: rgb (241, 241, 241);
 .userinfo {
   position: relative;
   width: 1150px;

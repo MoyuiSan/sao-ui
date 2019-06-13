@@ -21,7 +21,7 @@ export default {
     };
   },
   methods: {
-      //优化点击效果
+    //优化点击效果
     listHover: function(e) {
       let _this = this;
       if (_this.lock == true) {
@@ -33,13 +33,22 @@ export default {
         let timer = setTimeout(function() {
           _this.lock = true;
           clearTimeout(timer);
-        },400);
+        }, 400);
       }
     }
   }
 };
 </script>
 <style lang="less" scoped>
+@media screen and (max-width: 1000px) {
+  .list-show {
+    flex-direction: column;
+    .list-show-box{
+      margin-left: 0;
+      margin-top: -200px;
+    }
+  }
+}
 .userlist {
   position: relative;
   top: 0;
@@ -56,7 +65,7 @@ export default {
   position: relative;
   // width: 40%;
   height: 50%;
-    min-width: 768px;
+  min-width: 768px;
   background-color: white;
   overflow: hidden;
   display: flex;
