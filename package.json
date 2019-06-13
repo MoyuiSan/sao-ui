@@ -12,7 +12,9 @@
   "dependencies": {
     "core-js": "^2.6.5",
     "jquery": "^3.4.1",
+    "lib-flexible": "^0.3.2",
     "mo-js": "^0.288.2",
+    "postcss-px2rem": "^0.3.0",
     "vue": "^2.6.6",
     "vue-router": "^3.0.6",
     "vuex": "^3.1.1",
@@ -29,6 +31,7 @@
     "image-webpack-loader": "^4.6.0",
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
+    "px2rem-loader": "^0.1.9",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
     "vue-template-compiler": "^2.5.21"

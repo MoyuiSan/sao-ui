@@ -20,9 +20,16 @@ module.exports = {
     sourceMap: false, // 开启 CSS source maps?
     loaderOptions: {
       less: {
-        javascriptEnabled: true //less 配置
-      }
-    }, // css预设器配置项
+        javascriptEnabled: true, //less 配置
+      },
+      // postcss: {
+      //   plugins: [
+      //     require('postcss-px2rem')({
+      //       remUnit: 48
+      //     })
+      //   ]
+      // }
+    }, 
     modules: false // 启用 CSS modules for all css / pre-processor files.
   }, //强制关联Css样式
   productionSourceMap: false,
@@ -59,9 +66,20 @@ module.exports = {
       .loader('image-webpack-loader')
       .options({
         bypassOnDebug: true
-      })
-      .end()
+      }).end()
   },
+  // chainWebpack: config2 => {
+  //   config2.module
+  //     .rule('css')
+  //       .test(/\.css$/)
+  //       .oneOf('vue')
+  //       .resourceQuery(/\?vue/)
+  //       .use('px2rem')
+  //         .loader('px2rem-loader')
+  //         .options({
+  //           remUnit: 75
+  //         })
+  // },
   lintOnSave: false,
   configureWebpack: {
     plugins: [

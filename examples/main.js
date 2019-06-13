@@ -3,6 +3,7 @@ import App from './App.vue'
 import SaoUI from '../packages/index'
 import router from './router/index'
 import Mojs from 'mo-js'
+import 'lib-flexible/flexible'
 import {
   store
 } from './store/store'

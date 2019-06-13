@@ -75,18 +75,28 @@ export default {
 }
 .item_bottom {
   position: absolute;
+  display: flex;
+  display: -ms-flexbox;
+  display: -moz-flexbox;
   top: 0px;
   left: 0px;
   height: 50px;
-  width: 100%;
+  width: 50px;
   z-index: 99;
+  justify-content: center;
+  align-items: center;
   img {
+    position: relative;
+    top: 0px;
+    left: 0px;
     width: 100%;
     height: 50px;
   }
 }
 .item_icon {
   position: absolute;
+  top: 0;
+  left: 0;
   width: 50px;
   height: 50px;
   display: flex;

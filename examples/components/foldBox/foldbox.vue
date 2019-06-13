@@ -54,8 +54,9 @@ export default {
 }
 .list-show {
   position: relative;
-  width: 40%;
+  // width: 40%;
   height: 50%;
+    min-width: 768px;
   background-color: white;
   overflow: hidden;
   display: flex;

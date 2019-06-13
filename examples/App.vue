@@ -227,7 +227,10 @@ export default {
   background-image: url("../examples/assets/img/bg1.jpg");
   background-attachment: fixed;
   background-size: cover;
-  overflow: hidden;
+  overflow: auto;
+}
+#app::-webkit-scrollbar {
+  display: none;
 }
 @font-face {
   font-family: "saoUI";
@@ -291,6 +294,10 @@ html::-webkit-scrollbar-thumb {
   height: 100%;
   justify-content: center;
   align-items: center;
+  overflow: auto;
+}
+.flexbox::-webkit-scrollbar {
+  display: none;
 }
 .transitionRouter-enter-active,
 .transitionRouter-leave-active {
