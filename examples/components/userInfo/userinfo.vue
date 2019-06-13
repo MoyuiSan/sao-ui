@@ -1,5 +1,5 @@
 <template>
-  <div class="userinfo">
+  <div class="userinfo" v-show="appid==1">
     <div class="userinfo-aside">
       <div class="aside-top">
         <img :src="userimg">
@@ -99,7 +99,8 @@ export default {
         20,
         21
       ],
-      isLoading: false
+      isLoading: false,
+      appid: 0
     };
   },
   mounted() {
@@ -119,6 +120,13 @@ export default {
         console.log("到底了！");
       } else {
         _this.isLoading = false;
+      }
+    });
+    this.$nextTick(() => {
+      if ($(window).width() <= 1200) {
+        this.appid = 2;//手机
+      } else {
+        this.appid = 1;//PC
       }
     });
   },
