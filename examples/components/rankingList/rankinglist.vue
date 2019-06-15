@@ -53,7 +53,7 @@ export default {
   width: 320px;
   height: 460px;
   background-color: white;
-  box-shadow: 0px 0px 3px white;
+  border-radius: 3px;
   h3 {
     padding: 15px;
   }

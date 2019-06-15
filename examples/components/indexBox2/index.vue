@@ -25,6 +25,7 @@
         <button>lasd</button>
       </div>
     </div>
+    <div class="artivle"></div>
   </div>
 </template>
 <script>
@@ -73,7 +74,7 @@ export default {
       $(".banner-right-img").addClass("noshowimg");
       $(".banner-right-img").removeClass("showimg");
     }
-    // loveAndpeace(e) {
+    // ,loveAndpeace(e) {
     //   let myLoveX = e.clientX + "px";
     //   let myLoveY = e.clientY + "px";
     //   var _this = this;
@@ -135,15 +136,15 @@ export default {
       box-sizing: border-box;
       outline: none;
     }
-    button{
-     height: 25px;
-     width: 40px;
-     margin-left: 5px;
-     background-color: black;
-     outline: none;
-     border: 0;
-     color: white;
-     cursor: pointer;
+    button {
+      height: 25px;
+      width: 40px;
+      margin-left: 5px;
+      background-color: black;
+      outline: none;
+      border: 0;
+      color: white;
+      cursor: pointer;
     }
   }
 }
@@ -195,11 +196,17 @@ export default {
       height: 50px;
       margin-right: 20px;
       // cursor: pointer;
+      display: flex;
+      align-items: center;
       img {
         position: relative;
-        width: 100%;
-        height: 100%;
+        width: 80%;
+        height: 80%;
         z-index: 10;
+        border-radius: 20px;
+        box-sizing: border-box;
+        border: 1px solid rgb(255, 255, 255);
+        box-shadow: 0px 0xp 3px white;
         // animation-fill-mode: forwards;
         cursor: pointer;
       }

@@ -38,8 +38,8 @@ export default {
     this.startLunbo();
   },
   beforeDestroy() {
-    clearTimeout();
-    this.timer = null;
+    clearTimeout(this.inter2);
+    this.inter2 = null;
     clearInterval(this.inter);
     this.inter = null;
   },
@@ -49,11 +49,11 @@ export default {
     showImg: function() {
       console.log(document.visibilityState);
       let _this = this;
-      if (document.visibilityState == "visible") {
-        let source = document.getElementById("source");
-        // let ctx = document.getElementById("mycar").getContext("2d");
-        // ctx.drawImage(source, 0, 0, 400, 600);
-        try {
+      // let ctx = document.getElementById("mycar").getContext("2d");
+      // ctx.drawImage(source, 0, 0, 400, 600);
+      try {
+        if (document.visibilityState == "visible") {
+          let source = document.getElementById("source");
           let ctx = document.getElementById("mycar").getContext("2d");
           let offset = 200;
           // ctx.clearRect(0, 0, 400, 600);
@@ -73,13 +73,13 @@ export default {
               }
             }
           };
-        } catch (e) {
-          console.log(e);
-          clearTimeout(_this.timer);
-          _this.timer = null;
+        } else {
+          ctx.clearRect(0, 0, 400, 600);
         }
-      } else {
-        ctx.clearRect(0, 0, 400, 600);
+      } catch (e) {
+        console.log(e);
+        clearTimeout(_this.timer);
+        _this.timer = null;
       }
     },
     //选择图片
@@ -103,7 +103,7 @@ export default {
     },
     startItem: function() {},
     startLunbo: function() {
-      setInterval(() => {
+      this.inter2 = setInterval(() => {
         if (this.count < 6) {
           $(".carousel-contral ul li").css("background-color", "white");
           $(".carousel-contral ul li")

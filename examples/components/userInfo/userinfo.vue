@@ -1,5 +1,5 @@
 <template>
-  <div class="userinfo" v-show="appid==1">
+  <div class="userinfo" v-show="true">
     <div class="userinfo-aside">
       <div class="aside-top">
         <img :src="userimg">

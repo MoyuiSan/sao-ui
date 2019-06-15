@@ -29,7 +29,7 @@ module.exports = {
       //     })
       //   ]
       // }
-    }, 
+    },
     modules: false // 启用 CSS modules for all css / pre-processor files.
   }, //强制关联Css样式
   productionSourceMap: false,
@@ -91,6 +91,5 @@ module.exports = {
         minRatio: 0.8
       })
     ]
-  }
-
+  },
 }
