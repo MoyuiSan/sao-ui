@@ -22,7 +22,7 @@ module.exports = {
       less: {
         javascriptEnabled: true, //less 配置
       },
-      // postcss: {
+      // postcss: {//转化rem单位
       //   plugins: [
       //     require('postcss-px2rem')({
       //       remUnit: 48
