@@ -28,6 +28,7 @@
         </MenuBtn>
         <MenuBtn slot="btn" id="2" system="2">
           <MenuItem id="1" to="/input" name="输入框"></MenuItem>
+          <MenuItem id="6" to="/showparty" name="展示廊"></MenuItem>
         </MenuBtn>
         <MenuBtn slot="btn" id="3" system="3">
           <MenuItem id="1" to="/a" name="test1"></MenuItem>
@@ -116,13 +117,19 @@ export default {
       }
     });
     var u = navigator.userAgent;
-    if (u.indexOf('Android') > -1 || u.indexOf('Linux') > -1) {
-        //安卓手机
-    } else if (u.indexOf('iPhone') > -1) {
-        //苹果手机
-    } else if (u.indexOf('Windows Phone') > -1) {
-        //winphone手机
+    if (u.indexOf("Android") > -1 || u.indexOf("Linux") > -1) {
+      //安卓手机
+    } else if (u.indexOf("iPhone") > -1) {
+      //苹果手机
+    } else if (u.indexOf("Windows Phone") > -1) {
+      //winphone手机
     }
+    console.log(
+      `%c saoui %c 1.0.0 %c`,
+      "background:#35495e ; padding: 1px; border-radius: 3px 0 0 3px;  color: #fff",
+      "background:#41b883 ; padding: 1px; border-radius: 0 3px 3px 0;  color: #fff",
+      "background:transparent"
+    );
   },
   components: {
     // HelloWorld

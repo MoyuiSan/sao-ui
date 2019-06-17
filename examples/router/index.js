@@ -63,6 +63,11 @@ export default new Router({
             path: '/ranking',
             name: 'Ranking',
             component: resolve => require(['../components/rankingList/rankinglist'], resolve)
+        },//展示廊
+        {
+            path: '/showparty',
+            name: 'Showparty',
+            component: resolve => require(['../components/showParty/showparty'], resolve)
         }
     ]
 })
