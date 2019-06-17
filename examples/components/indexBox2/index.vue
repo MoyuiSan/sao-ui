@@ -25,7 +25,24 @@
         <button>lasd</button>
       </div>
     </div>
-    <div class="artivle"></div>
+    <div class="artivle">
+      <div class="article-box">
+        <div class="bigbox">
+          <div id="1" class="article-box-item item0"></div>
+          <div id="2" class="article-box-item item1"></div>
+          <div id="3" class="article-box-item item2"></div>
+        </div>
+        <div class="right-btn" @click="test3"></div>
+        <div class="left-btn" @click="test4"></div>
+        <div class="small-circle">
+          <ul @click="selectLi">
+            <li class="smallon" id="0"></li>
+            <li class="smalloff" id="1"></li>
+            <li class="smalloff" id="2"></li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -51,11 +68,18 @@ export default {
       ], //"富强"、"民主"、"文明"、"和谐"，"自由"、"平等"、"公正"、"法治"，"爱国"、"敬业"、"诚信"、"友善"
       isInfo: false,
       userImg: userimg,
-      powerI: 0
+      powerI: 0,
+      bannerI: 0,
+      inter: null
     };
   },
   mounted() {
     this.borderCtl();
+    this.bannerLunbo();
+  },
+  beforeDestroy() {
+    clearInterval(this.inter);
+    this.inter = null;
   },
   methods: {
     borderCtl: function() {
@@ -73,6 +97,90 @@ export default {
       this.isInfo = false;
       $(".banner-right-img").addClass("noshowimg");
       $(".banner-right-img").removeClass("showimg");
+    },
+    test3: function() {
+      if (
+        Math.abs(parseInt($(".bigbox").css("left"))) < 1320 * 2 &&
+        parseInt($(".bigbox").css("left")) % 1320 == 0 &&
+        this.bannerI <= 2
+      ) {
+        this.bannerI = this.bannerI + 1;
+        $(".bigbox").css(
+          "left",
+          -(-parseInt($(".bigbox").css("left")) + 1320) + "px"
+        );
+        $(".small-circle ul li").attr("class", "smalloff");
+        $(".small-circle ul li")
+          .eq(this.bannerI)
+          .attr("class", "smallon");
+      } else {
+        this.bannerI = 0;
+        $(".bigbox").css("left", "0px");
+        $(".small-circle ul li").attr("class", "smalloff");
+        $(".small-circle ul li")
+          .eq(this.bannerI)
+          .attr("class", "smallon");
+      }
+    },
+    test4: function() {
+      if (
+        parseInt($(".bigbox").css("left")) < 0 &&
+        parseInt($(".bigbox").css("left")) % 1320 == 0 &&
+        this.bannerI <= 2
+      ) {
+        this.bannerI = this.bannerI - 1;
+        $(".bigbox").css(
+          "left",
+          parseInt($(".bigbox").css("left")) + 1320 + "px"
+        );
+        $(".small-circle ul li").attr("class", "smalloff");
+        $(".small-circle ul li")
+          .eq(this.bannerI)
+          .attr("class", "smallon");
+      } else {
+        this.bannerI = 2;
+        $(".bigbox").css("left", "-2640px");
+        $(".small-circle ul li").attr("class", "smalloff");
+        $(".small-circle ul li")
+          .eq(this.bannerI)
+          .attr("class", "smallon");
+      }
+    },
+    selectLi: function(e) {
+      if (parseInt($(".bigbox").css("left")) % 1320 == 0) {
+        this.bannerI = e.target.id;
+        $(".bigbox").css("left", (-1320 * e.target.id).toString() + "px");
+        $(".small-circle ul li").attr("class", "smalloff");
+        $(".small-circle ul li")
+          .eq(e.target.id)
+          .attr("class", "smallon");
+      }
+    },
+    bannerLunbo: function() {
+      this.inter = setInterval(() => {
+        if (
+          this.bannerI < 2 &&
+          parseInt($(".bigbox").css("left")) % 1320 == 0
+        ) {
+          console.log(1);
+          this.bannerI++;
+          $(".bigbox").css(
+            "left",
+            -(-parseInt($(".bigbox").css("left")) + 1320) + "px"
+          );
+          $(".small-circle ul li").attr("class", "smalloff");
+          $(".small-circle ul li")
+            .eq(this.bannerI)
+            .attr("class", "smallon");
+        } else {
+          this.bannerI = 0;
+          $(".bigbox").css("left", "0px");
+          $(".small-circle ul li").attr("class", "smalloff");
+          $(".small-circle ul li")
+            .eq(0)
+            .attr("class", "smallon");
+        }
+      }, 4000);
     }
     // ,loveAndpeace(e) {
     //   let myLoveX = e.clientX + "px";
@@ -114,6 +222,8 @@ export default {
   width: 100%;
   height: 100%;
   background-color: rgb(172, 172, 172);
+  display: flex;
+  flex-direction: column;
 }
 .search {
   position: relative;
@@ -230,6 +340,85 @@ export default {
     }
   }
 }
+.artivle {
+  display: flex;
+  width: 100%;
+  height: auto;
+  background-color: white;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  .article-box {
+    position: relative;
+    width: 1320px;
+    height: 200px;
+    background-color: aliceblue;
+    overflow: hidden;
+    .bigbox {
+      position: absolute;
+      width: 3960px;
+      height: 100%;
+      left: 0;
+      top: 0;
+      transition: left 1s ease-in-out;
+      .article-box-item {
+        position: relative;
+        display: inline-block;
+        width: 1320px;
+        height: 100%;
+        left: 0;
+        top: 0;
+      }
+      .item0 {
+        // left: -1320px;
+        background-color: red;
+      }
+      .item1 {
+        // left: 0px;
+        background-color: green;
+      }
+      .item2 {
+        // left: 1320px;
+        background-color: yellow;
+      }
+    }
+    .right-btn {
+      position: absolute;
+      width: 20px;
+      height: 200px;
+      right: 0;
+      top: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      cursor: pointer;
+    }
+    .left-btn {
+      position: absolute;
+      width: 20px;
+      height: 200px;
+      left: 0;
+      top: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      cursor: pointer;
+    }
+    .small-circle {
+      position: absolute;
+      bottom: 10px;
+      right: 50px;
+      ul {
+        width: 80px;
+        height: 20px;
+        display: flex;
+        justify-content: space-between;
+        li {
+          width: 20px;
+          height: 20px;
+          list-style: none;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
 .mylove {
   position: fixed;
 }
@@ -240,7 +429,14 @@ export default {
   height: 400px;
   background-color: white;
   left: -105px;
+  box-shadow: 0px 0px 3px rgb(221, 221, 221);
   // animation: showInfo 0.4s ease-in-out;
+}
+.smallon {
+  background-color: white;
+}
+.smalloff {
+  background-color: black;
 }
 .info-enter-active {
   animation: showInfo 0.4s ease-in-out;
